@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 10.0f;
     
     public float jumpHeight = 10f;
-    public float jumpTime = 0.5f;
+    public float jumpTime = 3f;
 
     float jumpVelocity = 100f;
 
@@ -31,16 +31,10 @@ public class PlayerController : MonoBehaviour
 
             jumpVelocity = 2 * jumpHeight / jumpTime;
             rigidBody2d.gravityScale = jumpVelocity / jumpTime;
-            rigidBody2d.velocity += Vector2.up * jumpVelocity;
-            print(rigidBody2d.velocity);
+            rigidBody2d.velocity = Vector2.up * jumpVelocity;
         }
 
-        if (t.position.y < 0) {
-            t.position = new Vector3(t.position.x, 0, t.position.z);
-            rigidBody2d.velocity = new Vector2(0, 0);
-        }
-
-        t.position += new Vector3(horizontalMove, 0, 0);
+        rigidBody2d.position += new Vector2(horizontalMove, 0);
 
     }
 }
