@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded() {
         foreach (BoxCollider2D collider in colliders) {
-            RaycastHit2D hit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, Vector2.down, 0.01f, platformLayer);
+            RaycastHit2D hit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, Vector2.down, 0.05f, platformLayer);
             if (hit.collider != null) {
                 return true;
             }

@@ -10,6 +10,8 @@ public class ShieldCell : MonoBehaviour
     [SerializeField] Rigidbody2D myRigidbody;
     [SerializeField] BoxCollider2D myCollider;
 
+    private float rectification = 0.02f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +23,32 @@ public class ShieldCell : MonoBehaviour
     void Update()
     {
         if (canJoin && Input.GetKeyDown(KeyCode.J) ) {
+            //Snap player to new cell
             if (Mathf.Abs(player.position.y - myRigidbody.position.y) > Mathf.Abs(player.position.x - myRigidbody.position.x)) {
-                myRigidbody.transform.position = new Vector2(player.position.x, myRigidbody.position.y);
+                //vertical connection
+
+                //account for hitbox being smaller than sprite
+                float correction = 0f;
+                if (player.position.y - myRigidbody.position.y > 0) {
+                    correction = rectification;
+                } else {
+                    correction = -rectification;
+                }
+
+                player.transform.position = new Vector2(myRigidbody.position.x, player.position.y + correction);
+
             } else {
-                myRigidbody.transform.position = new Vector2(myRigidbody.position.x, player.position.y);
+                //horizontal connection
+
+                //account for hitbox being smaller than sprite
+                float correction = 0f;
+                if (player.position.x - myRigidbody.position.x > 0) {
+                    correction = rectification;
+                } else {
+                    correction = -rectification;
+                }
+
+                player.transform.position = new Vector2(player.position.x + correction, myRigidbody.position.y);
             }
 
             myRigidbody.transform.SetParent(player.transform);
