@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rigidBody2d;
     BoxCollider2D collider;
 
+    private Vector2 accel = Vector2.zero;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,21 +30,24 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalMove = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+
+
+    }
+
+    void FixedUpdate() {
+        Vector2 horizontalMove = new Vector2(Input.GetAxis("Horizontal") * 60 * speed * Time.deltaTime, rigidBody2d.velocity.y);
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
 
             jumpVelocity = 2 * jumpHeight / jumpTime;
             rigidBody2d.gravityScale = jumpVelocity / jumpTime;
-            rigidBody2d.velocity = Vector2.up * jumpVelocity;
+            rigidBody2d.AddForce(Vector2.up * jumpVelocity * 60);
         }
 
-        rigidBody2d.position += new Vector2(horizontalMove, 0);
-
+        rigidBody2d.velocity = Vector2.SmoothDamp(rigidBody2d.velocity, horizontalMove, ref accel, 0.05f);
     }
 
     bool IsGrounded() {
         RaycastHit2D hit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, Vector2.down, 0.01f, platformLayer);
-        print(hit.collider);
         return hit.collider != null;
     }
 }
