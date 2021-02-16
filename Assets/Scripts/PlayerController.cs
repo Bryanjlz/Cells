@@ -30,12 +30,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-    }
-
-    void FixedUpdate() {
-        Vector2 horizontalMove = new Vector2(Input.GetAxis("Horizontal") * 60 * speed * Time.deltaTime, rigidBody2d.velocity.y);
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
 
             jumpVelocity = 2 * jumpHeight / jumpTime;
@@ -43,6 +37,11 @@ public class PlayerController : MonoBehaviour
             rigidBody2d.AddForce(Vector2.up * jumpVelocity * 60);
         }
 
+
+    }
+
+    void FixedUpdate() {
+        Vector2 horizontalMove = new Vector2(Input.GetAxis("Horizontal") * speed, rigidBody2d.velocity.y);
         rigidBody2d.velocity = Vector2.SmoothDamp(rigidBody2d.velocity, horizontalMove, ref accel, 0.05f);
     }
 
