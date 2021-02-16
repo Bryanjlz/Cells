@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask platformLayer;
     Transform t;
     Rigidbody2D rigidBody2d;
-    BoxCollider2D collider;
+    public List<BoxCollider2D> colliders;
 
     private Vector2 accel = Vector2.zero;
 
@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
     {
         t = transform;
         rigidBody2d = GetComponent<Rigidbody2D>();
-        collider = GetComponent<BoxCollider2D>();
+        colliders = new List<BoxCollider2D>();
+        colliders.Add(GetComponent<BoxCollider2D>());
     }
 
     // Update is called once per frame
@@ -45,7 +46,13 @@ public class PlayerController : MonoBehaviour
     }
 
     bool IsGrounded() {
-        RaycastHit2D hit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, Vector2.down, 0.01f, platformLayer);
-        return hit.collider != null;
+        foreach (BoxCollider2D collider in colliders) {
+            RaycastHit2D hit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, Vector2.down, 0.01f, platformLayer);
+            if (hit.collider != null) {
+                return true;
+            }
+        }
+        return false;
     }
+
 }
