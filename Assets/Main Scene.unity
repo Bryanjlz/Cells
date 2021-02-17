@@ -234,7 +234,7 @@ PrefabInstance:
     - target: {fileID: 5463786954520019496, guid: 1f57a24d389e68c4f920d7ef5c6267e7, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 2036650999}
+      objectReference: {fileID: 0}
     - target: {fileID: 5463786954520019509, guid: 1f57a24d389e68c4f920d7ef5c6267e7, type: 3}
       propertyPath: m_Name
       value: Shield Cell (1)
@@ -5086,7 +5086,7 @@ PrefabInstance:
     - target: {fileID: 5463786954520019496, guid: 1f57a24d389e68c4f920d7ef5c6267e7, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 2036650999}
+      objectReference: {fileID: 0}
     - target: {fileID: 5463786954520019509, guid: 1f57a24d389e68c4f920d7ef5c6267e7, type: 3}
       propertyPath: m_Name
       value: Shield Cell

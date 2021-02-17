@@ -15,6 +15,7 @@ public class ShieldCell : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player").GetComponent<Rigidbody2D>();
         canJoin = false;
         myRigidbody.isKinematic = true;
     }
@@ -37,7 +38,7 @@ public class ShieldCell : MonoBehaviour
 
                 player.transform.position = new Vector2(myRigidbody.position.x, player.position.y + correction);
 
-            } else {
+            } else if (Mathf.Abs(player.position.y - myRigidbody.position.y) < Mathf.Abs(player.position.x - myRigidbody.position.x)) {
                 //horizontal connection
 
                 //account for hitbox being smaller than sprite
@@ -49,6 +50,10 @@ public class ShieldCell : MonoBehaviour
                 }
 
                 player.transform.position = new Vector2(player.position.x + correction, myRigidbody.position.y);
+
+            } else {
+                //if equal, give up
+                return;
             }
 
             myRigidbody.transform.SetParent(player.transform);
