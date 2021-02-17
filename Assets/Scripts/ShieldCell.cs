@@ -68,7 +68,7 @@ public class ShieldCell : Cell
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.name == "Player"   && (player.position - myRigidbody.position).magnitude < 1.4) {
+        if (collision.gameObject.name == "Player"   && (player.position - myRigidbody.position).magnitude < 1.2) {
             canJoin = true;
         }
     }
