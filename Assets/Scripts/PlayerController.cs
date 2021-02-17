@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float jumpTime = 3f;
 
     float jumpVelocity = 100f;
+    float minVelocity = 7f;
 
     public LayerMask platformLayer;
     Transform t;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public List<BoxCollider2D> colliders;
 
     private Vector2 accel = Vector2.zero;
+
+    bool isJumping = false;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +38,16 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
                 jumpVelocity = 2 * jumpHeight / jumpTime;
                 rigidBody2d.gravityScale = jumpVelocity / jumpTime;
+                isJumping = true;
                 rigidBody2d.AddForce(Vector2.up * jumpVelocity * 60);
+            }
+            if (isJumping) {
+                if (Input.GetKeyUp(KeyCode.Space)) {
+                    isJumping = false;
+                    if (rigidBody2d.velocity.y > minVelocity) {
+                        rigidBody2d.velocity = new Vector2(rigidBody2d.velocity.x, minVelocity);
+                    }
+                }
             }
         }
     }
