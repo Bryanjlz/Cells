@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-    [SerializeField] GameObject laserBeamStartPrefab;
-    [SerializeField] GameObject laserBeamPrefab;
-    private List<GameObject> lasers;
-
+    [SerializeField] GameObject laserBeam;
     [SerializeField] Collider2D laserCollider;
 
     private Vector2 direction;
+    private float lastDist;
 
     [SerializeField] LayerMask worldLayer;
     // Start is called before the first frame update
     void Start()
     {
-        lasers = new List<GameObject>();
         //Get direction
         int zRotation = (int)gameObject.transform.rotation.eulerAngles.z % 360;
 
@@ -43,65 +40,27 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!Pause.isPaused) {
-            Vector3 center;
-            Vector3 size;
-            center = gameObject.transform.position + (lasers.Count - 1) * (Vector3)direction;
-            size = new Vector3(0.75f, 1f);
-
-            print(center);
-            RaycastHit2D hit = BoxCast(center, size, worldLayer);
-            if (hit.collider == null) {
-                CreateLaser();
-                print(1);
-            } else {
-                print(2);
-                if (((Vector3)hit.centroid - lasers[lasers.Count - 1].transform.position).magnitude <= 1) {
-                    lasers[lasers.Count - 1].transform.position = hit.centroid;
-                } else {
-                    lasers[lasers.Count - 1].transform.position = gameObject.transform.position + lasers.Count * (Vector3)direction;
-                    CreateLaser();
-                }
-            }
-        }
-
+        CreateLaser();
     }
 
     private void CreateLaser () {
-        Vector3 center;
-        Vector3 size = new Vector3(0.75f, 1f); ;
-        //First laser block
-        if (lasers.Count == 0) {
-            center = gameObject.transform.position;
-        //Later laser blocks
-        } else {
-            center = lasers[lasers.Count - 1].transform.position;
-        }
-
-        //Create laser prefab
-        GameObject go = Instantiate(laserBeamPrefab);
-
-        //set child and set proper rotation
-        go.transform.SetParent(gameObject.transform);
-        go.transform.rotation = gameObject.transform.rotation;
-        go.name = "laser" + (lasers.Count);
-
-        //Add to lasers list
-        lasers.Add(go);
+        Vector3 center = gameObject.transform.position;
+        Vector3 size = new Vector3(0.75f, 1f);
 
         //Choose position of laser depending on what's in front
         print(center);
         RaycastHit2D hit = BoxCast(center, size, worldLayer);
         print(hit.distance);
-        if (hit.collider != null) {
-            go.transform.position = hit.centroid;
-        } else {
-            go.transform.position = (Vector2)center + direction;
-            CreateLaser();
+        
+        if (hit.distance != lastDist) {
+            if (hit.collider != null) {
+                laserBeam.transform.position = (Vector2)center + new Vector2(0f, 0.5f) + direction * hit.distance /2f;
+                laserBeam.transform.localScale = new Vector2(1f, hit.distance);
+            }
         }
     }
     RaycastHit2D BoxCast(Vector2 origen, Vector2 size, LayerMask mask) {
-        RaycastHit2D hit = Physics2D.BoxCast(origen, size, 0, direction, 1f, mask);
+        RaycastHit2D hit = Physics2D.BoxCast(origen, size, 0, direction, 100f, mask);
 
         ////Setting up the points to draw the cast
         //Vector2 p1, p2, p3, p4, p5, p6, p7, p8;
