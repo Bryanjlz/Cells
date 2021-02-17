@@ -11,6 +11,8 @@ public class Pause : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
+		isPaused = false;
+		Time.timeScale = 1;
 		canvas.enabled = false;
 	}
 
