@@ -25,33 +25,51 @@ public class ShieldCell : Cell
     {
         if (canJoin && Input.GetKeyDown(KeyCode.J) ) {
             //Snap player to new cell
-            if (Mathf.Abs(player.position.y - myRigidbody.position.y) > Mathf.Abs(player.position.x - myRigidbody.position.x)) {
+
+            //If close to equal, give up
+            if (Mathf.Abs(Mathf.Abs(player.position.y - myRigidbody.position.y) - Mathf.Abs(player.position.x - myRigidbody.position.x)) < 0.1)
+            {
+                print(Mathf.Abs(Mathf.Abs(player.position.y - myRigidbody.position.y) - Mathf.Abs(player.position.x - myRigidbody.position.x)));
+                return;
+            }
+            else if (Mathf.Abs(player.position.y - myRigidbody.position.y) > Mathf.Abs(player.position.x - myRigidbody.position.x))
+            {
                 //vertical connection
 
                 //account for hitbox being smaller than sprite
                 float correction = 0f;
-                if (player.position.y - myRigidbody.position.y > 0) {
+                if (player.position.y - myRigidbody.position.y > 0)
+                {
                     correction = rectification;
-                } else {
+                }
+                else
+                {
                     correction = -rectification;
                 }
 
                 player.transform.position = new Vector2(myRigidbody.position.x, player.position.y + correction);
 
-            } else if (Mathf.Abs(player.position.y - myRigidbody.position.y) < Mathf.Abs(player.position.x - myRigidbody.position.x)) {
+            }
+            else if (Mathf.Abs(player.position.y - myRigidbody.position.y) < Mathf.Abs(player.position.x - myRigidbody.position.x))
+            {
                 //horizontal connection
 
                 //account for hitbox being smaller than sprite
                 float correction = 0f;
-                if (player.position.x - myRigidbody.position.x > 0) {
+                if (player.position.x - myRigidbody.position.x > 0)
+                {
                     correction = rectification;
-                } else {
+                }
+                else
+                {
                     correction = -rectification;
                 }
 
                 player.transform.position = new Vector2(player.position.x + correction, myRigidbody.position.y);
 
-            } else {
+            }
+            else
+            {
                 //if equal, give up
                 return;
             }
@@ -68,7 +86,7 @@ public class ShieldCell : Cell
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.name == "Player"   && (player.position - myRigidbody.position).magnitude < 1.2) {
+        if (collision.gameObject.name == "Player"   && (player.position - myRigidbody.position).magnitude < 1.5) {
             canJoin = true;
         }
     }
