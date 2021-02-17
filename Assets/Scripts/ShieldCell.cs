@@ -24,58 +24,49 @@ public class ShieldCell : Cell
     // Update is called once per frame
     void Update()
     {
-        if (canJoin && Input.GetKeyDown(KeyCode.J) ) {
-            //Snap player to new cell
+        if (!Pause.isPaused) {
+            if (canJoin && Input.GetKeyDown(KeyCode.J)) {
+                //Snap player to new cell
 
-            //If close to equal, give up
-            if (Mathf.Abs(Mathf.Abs(player.position.y - myRigidbody.position.y) - Mathf.Abs(player.position.x - myRigidbody.position.x)) < 0.1)
-            {
-                print(Mathf.Abs(Mathf.Abs(player.position.y - myRigidbody.position.y) - Mathf.Abs(player.position.x - myRigidbody.position.x)));
-                return;
-            }
-            else if (Mathf.Abs(player.position.y - myRigidbody.position.y) > Mathf.Abs(player.position.x - myRigidbody.position.x))
-            {
-                //vertical connection
+                //If close to equal, give up
+                if (Mathf.Abs(Mathf.Abs(player.position.y - myRigidbody.position.y) - Mathf.Abs(player.position.x - myRigidbody.position.x)) < 0.1) {
+                    print(Mathf.Abs(Mathf.Abs(player.position.y - myRigidbody.position.y) - Mathf.Abs(player.position.x - myRigidbody.position.x)));
+                    return;
+                } else if (Mathf.Abs(player.position.y - myRigidbody.position.y) > Mathf.Abs(player.position.x - myRigidbody.position.x)) {
+                    //vertical connection
 
-                //account for hitbox being smaller than sprite
-                if (player.position.y - myRigidbody.position.y > 0) {
-                    player.transform.position = new Vector2(myRigidbody.position.x, myRigidbody.position.y + TILE_SIZE);
+                    //account for hitbox being smaller than sprite
+                    if (player.position.y - myRigidbody.position.y > 0) {
+                        player.transform.position = new Vector2(myRigidbody.position.x, myRigidbody.position.y + TILE_SIZE);
+
+                    } else {
+                        player.transform.position = new Vector2(myRigidbody.position.x, myRigidbody.position.y - TILE_SIZE);
+                    }
+
+                } else if (Mathf.Abs(player.position.y - myRigidbody.position.y) < Mathf.Abs(player.position.x - myRigidbody.position.x)) {
+                    //horizontal connection
+
+                    //account for hitbox being smaller than sprite
+                    if (player.position.x - myRigidbody.position.x > 0) {
+                        player.transform.position = new Vector2(myRigidbody.position.x + TILE_SIZE, myRigidbody.position.y);
+                    } else {
+                        player.transform.position = new Vector2(myRigidbody.position.x - TILE_SIZE, myRigidbody.position.y);
+                    }
 
                 } else {
-                    player.transform.position = new Vector2(myRigidbody.position.x, myRigidbody.position.y - TILE_SIZE);
+                    //if equal, give up
+                    return;
                 }
 
+                myRigidbody.transform.SetParent(player.transform);
+                Destroy(myRigidbody);
+
+                myCollider.size = new Vector2(0.92f, 0.92f);
+                player.gameObject.GetComponent<PlayerController>().colliders.Add(myCollider);
+                gameObject.layer = 8;
+                canJoin = false;
             }
-            else if (Mathf.Abs(player.position.y - myRigidbody.position.y) < Mathf.Abs(player.position.x - myRigidbody.position.x))
-            {
-                //horizontal connection
-
-                //account for hitbox being smaller than sprite
-                if (player.position.x - myRigidbody.position.x > 0)
-                {
-                    player.transform.position = new Vector2(myRigidbody.position.x + TILE_SIZE, myRigidbody.position.y);
-                }
-                else
-                {
-                    player.transform.position = new Vector2(myRigidbody.position.x - TILE_SIZE, myRigidbody.position.y);
-                }
-
-            }
-            else
-            {
-                //if equal, give up
-                return;
-            }
-
-            myRigidbody.transform.SetParent(player.transform);
-            Destroy(myRigidbody);
-
-            myCollider.size = new Vector2(0.92f, 0.92f);
-            player.gameObject.GetComponent<PlayerController>().colliders.Add(myCollider);
-            gameObject.layer = 8;
-            canJoin = false;
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

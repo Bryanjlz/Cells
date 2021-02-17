@@ -31,13 +31,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
-            jumpVelocity = 2 * jumpHeight / jumpTime;
-            rigidBody2d.gravityScale = jumpVelocity / jumpTime;
-            rigidBody2d.AddForce(Vector2.up * jumpVelocity * 60);
+        if (!Pause.isPaused) {
+            if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
+                jumpVelocity = 2 * jumpHeight / jumpTime;
+                rigidBody2d.gravityScale = jumpVelocity / jumpTime;
+                rigidBody2d.AddForce(Vector2.up * jumpVelocity * 60);
+            }
         }
-
-
     }
 
     void FixedUpdate() {
