@@ -11,7 +11,6 @@ public class ShieldCell : Cell
     [SerializeField] BoxCollider2D myCollider;
 
     private const float TILE_SIZE = 1;
-    private float rectification = 0.02f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +31,7 @@ public class ShieldCell : Cell
                 if (Mathf.Abs(Mathf.Abs(player.position.y - myRigidbody.position.y) - Mathf.Abs(player.position.x - myRigidbody.position.x)) < 0.1) {
                     print(Mathf.Abs(Mathf.Abs(player.position.y - myRigidbody.position.y) - Mathf.Abs(player.position.x - myRigidbody.position.x)));
                     return;
+
                 } else if (Mathf.Abs(player.position.y - myRigidbody.position.y) > Mathf.Abs(player.position.x - myRigidbody.position.x)) {
                     //vertical connection
 
@@ -80,15 +80,4 @@ public class ShieldCell : Cell
             canJoin = false;
         }
     }
-    //private void OnCollisionEnter2D(Collision2D collision) {
-    //    if (collision.gameObject.name == "Player" && (player.position - myRigidbody.position).magnitude < 1.5) {
-    //        canJoin = true;
-    //    }
-    //}
-
-    //private void OnCollisionExit2D(Collision2D collision) {
-    //    if (collision.gameObject.name == "Player") {
-    //        canJoin = false;
-    //    }
-    //}
 }

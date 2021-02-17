@@ -21,7 +21,6 @@ public class CameraController : MonoBehaviour
         focusTransform = focus.transform;
 
         bound = GameObject.Find("Grid/Tilemap").GetComponent<Renderer>().bounds;
-        print(bound);
 
         Camera cam = Camera.main;
         viewHeight = cam.orthographicSize;

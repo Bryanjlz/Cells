@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 accel = Vector2.zero;
 
+    [SerializeField] Pause pause;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,6 +55,10 @@ public class PlayerController : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void Die () {
+        pause.Restart();
     }
 
 }
