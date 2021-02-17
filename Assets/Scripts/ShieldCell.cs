@@ -10,6 +10,7 @@ public class ShieldCell : Cell
     [SerializeField] Rigidbody2D myRigidbody;
     [SerializeField] BoxCollider2D myCollider;
 
+    private const float TILE_SIZE = 1;
     private float rectification = 0.02f;
 
     // Start is called before the first frame update
@@ -37,17 +38,12 @@ public class ShieldCell : Cell
                 //vertical connection
 
                 //account for hitbox being smaller than sprite
-                float correction = 0f;
-                if (player.position.y - myRigidbody.position.y > 0)
-                {
-                    correction = rectification;
-                }
-                else
-                {
-                    correction = -rectification;
-                }
+                if (player.position.y - myRigidbody.position.y > 0) {
+                    player.transform.position = new Vector2(myRigidbody.position.x, myRigidbody.position.y + TILE_SIZE);
 
-                player.transform.position = new Vector2(myRigidbody.position.x, player.position.y + correction);
+                } else {
+                    player.transform.position = new Vector2(myRigidbody.position.x, myRigidbody.position.y - TILE_SIZE);
+                }
 
             }
             else if (Mathf.Abs(player.position.y - myRigidbody.position.y) < Mathf.Abs(player.position.x - myRigidbody.position.x))
@@ -55,17 +51,14 @@ public class ShieldCell : Cell
                 //horizontal connection
 
                 //account for hitbox being smaller than sprite
-                float correction = 0f;
                 if (player.position.x - myRigidbody.position.x > 0)
                 {
-                    correction = rectification;
+                    player.transform.position = new Vector2(myRigidbody.position.x + TILE_SIZE, myRigidbody.position.y);
                 }
                 else
                 {
-                    correction = -rectification;
+                    player.transform.position = new Vector2(myRigidbody.position.x - TILE_SIZE, myRigidbody.position.y);
                 }
-
-                player.transform.position = new Vector2(player.position.x + correction, myRigidbody.position.y);
 
             }
             else
@@ -85,15 +78,26 @@ public class ShieldCell : Cell
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.name == "Player"   && (player.position - myRigidbody.position).magnitude < 1.5) {
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.name == "Player" && (player.position - myRigidbody.position).magnitude < 1.5) {
             canJoin = true;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision) {
+    private void OnTriggerExit2D(Collider2D collision) {
         if (collision.gameObject.name == "Player") {
             canJoin = false;
         }
     }
+    //private void OnCollisionEnter2D(Collision2D collision) {
+    //    if (collision.gameObject.name == "Player" && (player.position - myRigidbody.position).magnitude < 1.5) {
+    //        canJoin = true;
+    //    }
+    //}
+
+    //private void OnCollisionExit2D(Collision2D collision) {
+    //    if (collision.gameObject.name == "Player") {
+    //        canJoin = false;
+    //    }
+    //}
 }

@@ -4883,6 +4883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ead23a533960e428e7226b391403a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  my_particles: {fileID: 0}
 --- !u!1 &5012592751767916722
 GameObject:
   m_ObjectHideFlags: 0
@@ -4896,6 +4897,7 @@ GameObject:
   - component: {fileID: 5012592751767916723}
   - component: {fileID: 5012592751767916718}
   - component: {fileID: 5012592751767916721}
+  - component: {fileID: -8407677192128674233}
   m_Layer: 9
   m_Name: Shield Cell
   m_TagString: Untagged
@@ -5032,4 +5034,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!61 &-8407677192128674233
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5012592751767916722}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1.6, y: 0.96}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 1.2}
   m_EdgeRadius: 0
