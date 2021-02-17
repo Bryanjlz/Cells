@@ -19,6 +19,9 @@ public class Cutter_Collide : MonoBehaviour
                     Destroy(controller.transform.GetChild(i).gameObject);
                     controller.colliders.RemoveAt(1);
                 }
+
+                Destroy(transform.GetChild(0).gameObject);
+                GetComponent<PolygonCollider2D>().enabled = false;
             }
                 
         }
