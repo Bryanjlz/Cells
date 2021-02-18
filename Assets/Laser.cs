@@ -15,7 +15,6 @@ public class Laser : MonoBehaviour
     private Vector2 direction;
     private float lastDist;
 
-    [SerializeField] LayerMask worldLayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,8 +45,6 @@ public class Laser : MonoBehaviour
                 break;
         }
 
-        laserBeam.GetComponent<LaserBeam>().direction = direction;
-        laserBeam.GetComponent<LaserBeam>().worldLayer = worldLayer;
         //Create Laser
         CreateLaser();
     }
@@ -61,7 +58,8 @@ public class Laser : MonoBehaviour
     private void CreateLaser () {
 
         //Choose position of laser depending on what's in front
-        RaycastHit2D hit = BoxCast(center, size, worldLayer);
+        int layer = 1 << 9 | 1 << 10;
+        RaycastHit2D hit = BoxCast(center, size, layer);
         if (hit.distance != lastDist) {
             if (hit.collider != null) {
                 laserBeam.transform.position = (Vector2)center + offset + direction * hit.distance /2f;
@@ -69,7 +67,7 @@ public class Laser : MonoBehaviour
             }
         }
     }
-    RaycastHit2D BoxCast(Vector2 origin, Vector2 size, LayerMask mask) {
+    RaycastHit2D BoxCast(Vector2 origin, Vector2 size, int mask) {
         RaycastHit2D hit = Physics2D.BoxCast(origin, size, 0, direction, 100f, mask);
 
         ////Setting up the points to draw the cast
