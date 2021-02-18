@@ -60,10 +60,11 @@ public class ShieldCell : Cell
 
                 myRigidbody.transform.SetParent(player.transform);
                 Destroy(myRigidbody);
+                BoxCollider2D[] colliders = gameObject.GetComponents<BoxCollider2D>();
+                colliders[1].size = new Vector2(1.1f, 1.1f);
 
                 myCollider.size = new Vector2(0.92f, 0.92f);
                 player.gameObject.GetComponent<PlayerController>().colliders.Add(myCollider);
-                gameObject.layer = 8;
                 canJoin = false;
             }
         }
