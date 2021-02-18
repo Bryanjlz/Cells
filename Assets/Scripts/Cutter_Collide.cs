@@ -7,7 +7,6 @@ public class Cutter_Collide : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         PlayerController controller = other.GetComponent<PlayerController>();
-        print(controller);
         // Only give health to the controller which is Ruby (since other objects do not have RubyController)
         if (controller != null)
         {

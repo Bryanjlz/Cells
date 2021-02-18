@@ -22,8 +22,6 @@ public class Laser : MonoBehaviour
         center = gameObject.transform.position;
         //Get direction
         int zRotation = (int)gameObject.transform.rotation.eulerAngles.z % 360;
-
-        print(zRotation);
         switch (zRotation) {
             case 0:
                 size = new Vector2(0.75f, 1f);
@@ -47,7 +45,6 @@ public class Laser : MonoBehaviour
                 direction = Vector2.right;
                 break;
         }
-        print(direction);
         //Create Laser
         CreateLaser();
     }
