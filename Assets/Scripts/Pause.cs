@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class Pause : MonoBehaviour
 {
 	[SerializeField] Canvas canvas;
-	[SerializeField] string restartLevelPath;
 	[SerializeField] public static bool isPaused;
 	// Start is called before the first frame update
 	void Start()
@@ -27,7 +26,7 @@ public class Pause : MonoBehaviour
 	}
 
 	public void Restart () {
-		SceneManager.LoadScene(restartLevelPath);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 	public void Menu() {
