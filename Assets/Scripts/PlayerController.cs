@@ -53,6 +53,10 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+            if (Input.GetKeyDown(KeyCode.K) && IsGrounded())
+            {
+                rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
+            }
         }
     }
 
@@ -67,7 +71,8 @@ public class PlayerController : MonoBehaviour
     bool IsGrounded() {
         foreach (BoxCollider2D collider in colliders) {
             RaycastHit2D hit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, Vector2.down, 0.05f, platformLayer);
-            if (hit.collider != null) {
+            RaycastHit2D other_hit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, Vector2.up, 0.05f, platformLayer);
+            if (hit.collider != null || other_hit.collider != null) {
                 return true;
             }
         }
