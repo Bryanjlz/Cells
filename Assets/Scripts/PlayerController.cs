@@ -5,17 +5,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    public float X_VELOCITY_INSPECTION = 0;
+    public float X_ACCELERATION_INSPECTION = 0;
+    public List<Collider2D> blockingColliders; 
+
     public float speed = 10.0f;
     
     public float jumpHeight = 10f;
     public float jumpTime = 3f;
 
     float jumpVelocity = 100f;
-    float minVelocity = 7f;
+    float minVelocity = 5f;
 
-    public LayerMask platformLayer;
+    private LayerMask worldCollisionMask = 1 << 9 | 1 << 10;
     Transform t;
-    Rigidbody2D rigidBody2d;
+    public Rigidbody2D rigidBody2d;
     public List<Collider2D> colliders;
 
     private Vector2 accel = Vector2.zero;
@@ -36,13 +40,16 @@ public class PlayerController : MonoBehaviour
         rigidBody2d = GetComponent<Rigidbody2D>();
         colliders = new List<Collider2D>();
         colliders.Add(GetComponent<BoxCollider2D>());
+        jumpVelocity = 2 * jumpHeight / jumpTime;
+        rigidBody2d.gravityScale = jumpVelocity / jumpTime;
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!Pause.isPaused) {
-            if (Input.GetKeyDown(KeyCode.Space) && HasGravity() && IsGrounded())
+            bool upInput = Input.GetAxis("Vertical") > 0;
+            if (!isJumping && upInput && HasGravity() && IsGrounded())
             {
                 rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
                 if (direction.Equals(Vector2.down)) {
@@ -50,14 +57,12 @@ public class PlayerController : MonoBehaviour
                 } else {
                     direction = Vector2.down;
                 }
-            }  else if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
-                jumpVelocity = 2 * jumpHeight / jumpTime;
-                rigidBody2d.gravityScale = jumpVelocity / jumpTime;
+            }  else if (!isJumping && upInput && IsGrounded()) {
                 isJumping = true;
                 rigidBody2d.AddForce(Vector2.up * jumpVelocity * 60);
             }
             if (isJumping) {
-                if (Input.GetKeyUp(KeyCode.Space)) {
+                if (!upInput) {
                     isJumping = false;
                     if (rigidBody2d.velocity.y > minVelocity) {
                         rigidBody2d.velocity = new Vector2(rigidBody2d.velocity.x, minVelocity);
@@ -75,14 +80,48 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate() {
         Vector2 horizontalMove = new Vector2(Input.GetAxis("Horizontal") * speed, rigidBody2d.velocity.y);
         if (!dying)
-        {
+        {   
+            
+            /* This doesn't work for some reason
+            blockingColliders = new List<Collider2D>();
+            //Prevent velocity build up
+            bool isLeftBlocked = false;
+            bool isRightBlocked = false;
+            bool onGround = IsGrounded();
+            foreach (BoxCollider2D collider in colliders) {
+                RaycastHit2D leftHit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, Vector2.left, 0.05f, worldCollisionMask);
+                RaycastHit2D rightHit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, Vector2.right, 0.05f, worldCollisionMask);
+                if (leftHit.collider != null) {
+                    isLeftBlocked = true;
+                    blockingColliders.Add(leftHit.collider);
+                }
+                if (rightHit.collider != null) {
+                    isRightBlocked = true;
+                    blockingColliders.Add(rightHit.collider);
+                }
+            }
+            
+            if (isLeftBlocked && horizontalMove.x < 0) {
+                horizontalMove = new Vector2(0, horizontalMove.y);
+            }
+            if (isRightBlocked && horizontalMove.x > 0) {
+                horizontalMove = new Vector2(0, horizontalMove.y);
+            }
+
+            Vector2 old = rigidBody2d.velocity;
+            */
+            Vector2 old = rigidBody2d.velocity;
             rigidBody2d.velocity = Vector2.SmoothDamp(rigidBody2d.velocity, horizontalMove, ref accel, 0.05f);
+            
+            //Debug values (also do not make sense)
+            X_VELOCITY_INSPECTION = rigidBody2d.velocity.x;
+            X_ACCELERATION_INSPECTION = old.x - rigidBody2d.velocity.x;
         }
     }
 
     bool IsGrounded() {
         foreach (BoxCollider2D collider in colliders) {
-            RaycastHit2D hit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, direction, 0.05f, 1 << 9 | 1 << 10);
+            RaycastHit2D hit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, direction, 0.05f, worldCollisionMask);
 
             bool yes = true;
             if (hit.collider == null) {
