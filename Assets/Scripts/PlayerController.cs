@@ -39,7 +39,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (!Pause.isPaused) {
-            if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
+            if (Input.GetKeyDown(KeyCode.Space) && HasGravity() && IsGrounded())
+            {
+                rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
+            }  else if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
                 jumpVelocity = 2 * jumpHeight / jumpTime;
                 rigidBody2d.gravityScale = jumpVelocity / jumpTime;
                 isJumping = true;
@@ -52,6 +55,10 @@ public class PlayerController : MonoBehaviour
                         rigidBody2d.velocity = new Vector2(rigidBody2d.velocity.x, minVelocity);
                     }
                 }
+            }
+            if (rigidBody2d.gravityScale < 0 && !HasGravity())
+            {
+                rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
             }
 
         }
@@ -79,12 +86,15 @@ public class PlayerController : MonoBehaviour
     // for gravity square
     bool HasGravity()
     {
-        for (int i = 0; i < colliders.Count; i++)
-        {
-            if (transform.GetChild(i).GetComponent<ShieldCell>() != null)
+        if (!dying) {
+            for (int i = 0; i < colliders.Count; i++)
             {
-                return true;
+                if (transform.GetChild(i).GetComponent<GravityCell>() != null)
+                {
+                    return true;
+                }
             }
+            
         }
         return false;
     }
@@ -98,22 +108,24 @@ public class PlayerController : MonoBehaviour
         pause.Restart();
     }
     public void Die () {
-        Instantiate(transform.GetChild(0).GetComponent<ParticleSystem>(), transform.position, Quaternion.identity).GetComponent<Particle_Death>().Action();
+        if (!dying) {
+            Instantiate(transform.GetChild(0).GetComponent<ParticleSystem>(), transform.position, Quaternion.identity).GetComponent<Particle_Death>().Action();
 
-        // kill all connecting boxes as well
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            if (transform.GetChild(i).GetComponent<Cell>() != null)
+            // kill all connecting boxes as well
+            for (int i = 0; i < transform.childCount; i++)
             {
-                transform.GetChild(i).gameObject.GetComponent<Cell>().death();
-                Destroy(transform.GetChild(i).gameObject);
-                colliders.RemoveAt(1);
+                if (transform.GetChild(i).GetComponent<Cell>() != null)
+                {
+                    transform.GetChild(i).gameObject.GetComponent<Cell>().death();
+                    Destroy(transform.GetChild(i).gameObject);
+                    colliders.RemoveAt(1);
+                }
             }
+
+            Destroy(transform.GetChild(0).gameObject);
+            StartCoroutine(MyCoroutine());
         }
 
-        Destroy(transform.GetChild(0).gameObject);
-        StartCoroutine(MyCoroutine());
-        
     }
 
 }

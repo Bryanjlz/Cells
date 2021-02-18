@@ -15,6 +15,12 @@ public class LaserBeam : MonoBehaviour
                 return;
             }
             collision.gameObject.GetComponent<PlayerController>().Die();
+        } else if (collision.gameObject.GetComponent<ShieldCell>() != null)
+        {
+            // Protected
+        } else if (collision.gameObject.GetComponent<Cell>() != null)
+        {
+            collision.gameObject.GetComponent<Cell>().GetComponentInParent<PlayerController>().Die();
         }
     }
 }
