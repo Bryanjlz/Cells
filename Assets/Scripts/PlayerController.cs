@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Pause pause;
     bool isJumping = false;
 
+    // Ramp to enable the death sequence
+    bool dying = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +58,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate() {
         Vector2 horizontalMove = new Vector2(Input.GetAxis("Horizontal") * speed, rigidBody2d.velocity.y);
-        rigidBody2d.velocity = Vector2.SmoothDamp(rigidBody2d.velocity, horizontalMove, ref accel, 0.05f);
+        if (!dying)
+        {
+            rigidBody2d.velocity = Vector2.SmoothDamp(rigidBody2d.velocity, horizontalMove, ref accel, 0.05f);
+        }
     }
 
     bool IsGrounded() {
@@ -67,9 +73,20 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
-
-    public void Die () {
+    IEnumerator MyCoroutine()
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().isKinematic = true;
+        dying = true;
+        yield return new WaitForSeconds(1);
         pause.Restart();
+    }
+    public void Die () {
+        Instantiate(transform.GetChild(0).GetComponent<ParticleSystem>(), transform.position, Quaternion.identity).GetComponent<Particle_Death>().Action();
+
+        StartCoroutine(MyCoroutine());
+        
     }
 
 }
