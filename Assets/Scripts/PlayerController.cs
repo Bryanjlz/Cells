@@ -16,9 +16,11 @@ public class PlayerController : MonoBehaviour
     public LayerMask platformLayer;
     Transform t;
     Rigidbody2D rigidBody2d;
-    public List<BoxCollider2D> colliders;
+    public List<Collider2D> colliders;
 
     private Vector2 accel = Vector2.zero;
+
+    private Vector2 direction;
 
     [SerializeField] Pause pause;
     bool isJumping = false;
@@ -29,9 +31,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        direction = Vector2.down;
         t = transform;
         rigidBody2d = GetComponent<Rigidbody2D>();
-        colliders = new List<BoxCollider2D>();
+        colliders = new List<Collider2D>();
         colliders.Add(GetComponent<BoxCollider2D>());
     }
 
@@ -42,6 +45,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space) && HasGravity() && IsGrounded())
             {
                 rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
+                if (direction.Equals(Vector2.down)) {
+                    direction = Vector2.up;
+                } else {
+                    direction = Vector2.down;
+                }
             }  else if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
                 jumpVelocity = 2 * jumpHeight / jumpTime;
                 rigidBody2d.gravityScale = jumpVelocity / jumpTime;
@@ -74,10 +82,23 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded() {
         foreach (BoxCollider2D collider in colliders) {
-            RaycastHit2D hit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, Vector2.down, 0.05f, 1 << 9 | 1 << 10);
-            RaycastHit2D other_hit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, Vector2.up, 0.05f, 1 << 9 | 1 << 10);
-            if (hit.collider != null || other_hit.collider != null) {
-                return true;
+            RaycastHit2D hit = Physics2D.BoxCast(collider.bounds.center, collider.bounds.size, 0, direction, 0.05f, 1 << 9 | 1 << 10);
+
+            bool yes = true;
+            if (hit.collider == null) {
+                yes = false;
+            }
+
+            //yes
+            foreach (BoxCollider2D collider2 in colliders) {
+                if ((hit.collider != null && hit.collider.gameObject.Equals(collider2.gameObject))) {
+                    yes = false;
+                }
+            }
+
+            //yes
+            if (yes) {
+                return yes;
             }
         }
         return false;
