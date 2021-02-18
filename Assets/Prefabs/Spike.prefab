@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1719523390876901963}
   - component: {fileID: 1719523390876901964}
-  - component: {fileID: 1719523390876901965}
   - component: {fileID: 1719523390876901966}
-  - component: {fileID: 1252301855544238873}
+  - component: {fileID: 1719523390876901965}
+  - component: {fileID: 6974492768674080870}
   m_Layer: 9
   m_Name: Spike
   m_TagString: Untagged
@@ -85,6 +85,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1719523390876901966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719523390876901967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c797b92211a3f1489ca14034bd8d685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!60 &1719523390876901965
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -110,23 +122,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.50000954, y: -0.49997896}
-      - {x: -0.5000315, y: -0.4999162}
-      - {x: -0.1257124, y: 0.4999866}
-      - {x: 0.12565231, y: 0.50018185}
---- !u!114 &1719523390876901966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1719523390876901967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c797b92211a3f1489ca14034bd8d685, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!60 &1252301855544238873
+    - - {x: 0.48103237, y: -0.49997896}
+      - {x: -0.4632969, y: -0.50049853}
+      - {x: -0.4828329, y: -0.50050926}
+      - {x: -0.12490654, y: 0.49777034}
+      - {x: 0.12434292, y: 0.49796563}
+--- !u!60 &6974492768674080870
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +152,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.50000954, y: -0.49997896}
-      - {x: -0.5000315, y: -0.4999162}
-      - {x: -0.1257124, y: 0.4999866}
-      - {x: 0.12565231, y: 0.50018185}
+    - - {x: 0.48103237, y: -0.49997896}
+      - {x: -0.4632969, y: -0.50049853}
+      - {x: -0.4828329, y: -0.50050926}
+      - {x: -0.12490654, y: 0.49777034}
+      - {x: 0.12434292, y: 0.49796563}
