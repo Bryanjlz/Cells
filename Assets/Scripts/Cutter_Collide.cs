@@ -10,7 +10,7 @@ public class Cutter_Collide : MonoBehaviour
         // Only give health to the controller which is Ruby (since other objects do not have RubyController)
         if (controller != null)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.Space))
             {
                 for (int i = 0; i < controller.transform.childCount; i++)
                 {
@@ -24,7 +24,6 @@ public class Cutter_Collide : MonoBehaviour
                 Destroy(transform.GetChild(0).gameObject);
                 GetComponent<PolygonCollider2D>().enabled = false;
             }
-                
         }
     }
 }

@@ -6,7 +6,7 @@ public class Cell : MonoBehaviour
 {
     [SerializeField] Vector2 startingPos;
     [SerializeField] bool canJoin;
-    [SerializeField] Rigidbody2D player;
+    [SerializeField] protected Rigidbody2D player;
     [SerializeField] Rigidbody2D myRigidbody;
     [SerializeField] BoxCollider2D myCollider;
 
@@ -25,7 +25,7 @@ public class Cell : MonoBehaviour
     {
         if (!Pause.isPaused)
         {
-            if (canJoin && Input.GetKeyDown(KeyCode.E))
+            if (canJoin && Input.GetKeyDown(KeyCode.Space))
             {
                 //Snap player to new cell
 
@@ -81,6 +81,7 @@ public class Cell : MonoBehaviour
                 myCollider.size = new Vector2(0.92f, 0.92f);
                 player.gameObject.GetComponent<PlayerController>().colliders.Add(myCollider);
                 canJoin = false;
+                OnJoin();
             }
         }
     }
@@ -100,6 +101,12 @@ public class Cell : MonoBehaviour
             canJoin = false;
         }
     }
+
+    //Called when the cell is added
+    public virtual void OnJoin() {
+
+    }
+
     public void death()
     {
         Instantiate(transform.GetChild(0).GetComponent<ParticleSystem>(), transform.position, Quaternion.identity).GetComponent<Particle_Death>().Action();

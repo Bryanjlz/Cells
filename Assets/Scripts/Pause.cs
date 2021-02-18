@@ -23,6 +23,9 @@ public class Pause : MonoBehaviour
 			Time.timeScale = 0;
 			canvas.enabled = true;
         }
+		if (Input.GetKeyDown(KeyCode.R)) {
+			Restart();
+        }
 	}
 
 	public void Restart () {
