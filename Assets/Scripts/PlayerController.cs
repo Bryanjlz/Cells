@@ -39,10 +39,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (!Pause.isPaused) {
-            if (Input.GetKeyDown(KeyCode.Space) && HasGravity() && IsGrounded())
-            {
-                rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
-            }  else if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
+            if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
                 jumpVelocity = 2 * jumpHeight / jumpTime;
                 rigidBody2d.gravityScale = jumpVelocity / jumpTime;
                 isJumping = true;
