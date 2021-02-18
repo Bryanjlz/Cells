@@ -90,6 +90,17 @@ public class PlayerController : MonoBehaviour
     public void Die () {
         Instantiate(transform.GetChild(0).GetComponent<ParticleSystem>(), transform.position, Quaternion.identity).GetComponent<Particle_Death>().Action();
 
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if (transform.GetChild(i).GetComponent<Cell>() != null)
+            {
+                transform.GetChild(i).gameObject.GetComponent<Cell>().death();
+                Destroy(transform.GetChild(i).gameObject);
+                colliders.RemoveAt(1);
+            }
+        }
+
+        Destroy(transform.GetChild(0).gameObject);
         StartCoroutine(MyCoroutine());
         
     }
