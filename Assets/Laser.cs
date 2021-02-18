@@ -39,11 +39,12 @@ public class Laser : MonoBehaviour
                 break;
             case 270:
                 size = new Vector2(1f, 0.75f);
-
                 offset = new Vector2(0.5f, 0f);
                 direction = Vector2.right;
                 break;
         }
+
+        laserBeam.GetComponent<LaserBeam>().direction = direction;
 
         //Create Laser
         CreateLaser();
@@ -58,8 +59,7 @@ public class Laser : MonoBehaviour
     private void CreateLaser () {
 
         //Choose position of laser depending on what's in front
-        int layer = 1 << 9 | 1 << 10;
-        RaycastHit2D hit = BoxCast(center, size, layer);
+        RaycastHit2D hit = BoxCast(center, size, 1 << 9 | 1 << 10);
         if (hit.distance != lastDist) {
             if (hit.collider != null) {
                 laserBeam.transform.position = (Vector2)center + offset + direction * hit.distance /2f;
