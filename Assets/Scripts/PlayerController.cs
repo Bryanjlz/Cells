@@ -39,7 +39,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (!Pause.isPaused) {
-            if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
+            if (Input.GetKeyDown(KeyCode.Space) && HasGravity() && IsGrounded())
+            {
+                rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
+            }  else if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
                 jumpVelocity = 2 * jumpHeight / jumpTime;
                 rigidBody2d.gravityScale = jumpVelocity / jumpTime;
                 isJumping = true;
@@ -53,10 +56,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-            if (Input.GetKeyDown(KeyCode.K) && IsGrounded())
-            {
-                rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
-            }
+
         }
     }
 
@@ -78,6 +78,19 @@ public class PlayerController : MonoBehaviour
         }
         return false;
     }
+
+    // for gravity square
+    bool HasGravity()
+    {
+        for (int i = 0; i < colliders.Count; i++)
+        {
+            if (transform.GetChild(i).GetComponent<ShieldCell>() != null)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     IEnumerator MyCoroutine()
     {
         GetComponent<SpriteRenderer>().enabled = false;
@@ -90,6 +103,7 @@ public class PlayerController : MonoBehaviour
     public void Die () {
         Instantiate(transform.GetChild(0).GetComponent<ParticleSystem>(), transform.position, Quaternion.identity).GetComponent<Particle_Death>().Action();
 
+        // kill all connecting boxes as well
         for (int i = 0; i < transform.childCount; i++)
         {
             if (transform.GetChild(i).GetComponent<Cell>() != null)

@@ -15,7 +15,7 @@ public class Cutter_Collide : MonoBehaviour
                 for (int i = 0; i < controller.transform.childCount; i++)
                 {
                     if (controller.transform.GetChild(i).GetComponent<Cell>() != null) {
-                        controller.transform.GetChild(i).gameObject.GetComponent<Cell>().death();
+                        controller.transform.GetChild(i).GetComponent<Cell>().death();
                         Destroy(controller.transform.GetChild(i).gameObject);
                         controller.colliders.RemoveAt(1);
                     }
