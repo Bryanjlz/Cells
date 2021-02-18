@@ -4898,7 +4898,7 @@ GameObject:
   - component: {fileID: 5012592751767916718}
   - component: {fileID: 5012592751767916721}
   - component: {fileID: -8407677192128674233}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Shield Cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
