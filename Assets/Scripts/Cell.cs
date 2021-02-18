@@ -25,7 +25,7 @@ public class Cell : MonoBehaviour
     {
         if (!Pause.isPaused)
         {
-            if (canJoin && Input.GetKeyDown(KeyCode.J))
+            if (canJoin && Input.GetKeyDown(KeyCode.E))
             {
                 //Snap player to new cell
 
