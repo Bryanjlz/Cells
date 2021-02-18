@@ -20,6 +20,12 @@ public class LaserBeam : MonoBehaviour
             // Protected
         } else if (collision.gameObject.GetComponent<Cell>() != null)
         {
+            //Check if there is a shield cell in direction laser is coming from
+            Collider2D player = collision.gameObject.GetComponent<Collider2D>();
+            RaycastHit2D hit = Physics2D.BoxCast(player.bounds.center, player.bounds.size, 0, -direction, 1.2f, 1 << 10);
+            if (hit.collider != null) {
+                return;
+            }
             collision.gameObject.GetComponent<Cell>().GetComponentInParent<PlayerController>().Die();
         }
     }
