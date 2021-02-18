@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Pause pause;
     bool isJumping = false;
 
+    int jumps = 1;
+
     // Ramp to enable the death sequence
     bool dying = false;
 
@@ -42,16 +44,19 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (!Pause.isPaused) {
-            if (Input.GetKeyDown(KeyCode.Space) && HasGravity() && IsGrounded())
+            if (Input.GetKeyDown(KeyCode.Space) && HasGravity() && jumps > 0)
             {
+                jumps--;
                 rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
                 if (direction.Equals(Vector2.down)) {
                     direction = Vector2.up;
                 } else {
                     direction = Vector2.down;
                 }
-            }  else if (Input.GetKeyDown(KeyCode.Space) && IsGrounded()) {
-                jumpVelocity = 2 * jumpHeight / jumpTime;
+            }  else if (Input.GetKeyDown(KeyCode.Space) && jumps > 0) {
+                rigidBody2d.velocity = new Vector2(rigidBody2d.velocity.x, 0f);
+                jumps--;
+                jumpVelocity = (2 * jumpHeight / jumpTime);
                 rigidBody2d.gravityScale = jumpVelocity / jumpTime;
                 isJumping = true;
                 rigidBody2d.AddForce(Vector2.up * jumpVelocity * 60);
@@ -64,6 +69,12 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+
+            if (IsGrounded())
+            {
+                jumps = 1 + SlimeBoosts();
+            }
+
             if (rigidBody2d.gravityScale < 0 && !HasGravity())
             {
                 rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
@@ -118,6 +129,23 @@ public class PlayerController : MonoBehaviour
             
         }
         return false;
+    }
+
+    int SlimeBoosts()
+    {
+        int count = 0;
+        if (!dying)
+        {
+            for (int i = 0; i < colliders.Count; i++)
+            {
+                if (transform.GetChild(i).GetComponent<SlimeCell>() != null)
+                {
+                    count++;
+                }
+            }
+
+        }
+        return count;
     }
     IEnumerator MyCoroutine()
     {
