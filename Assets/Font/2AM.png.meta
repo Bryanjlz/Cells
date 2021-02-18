@@ -83,6 +83,36 @@ TextureImporter:
   - first:
       213: -2108579216504047764
     second: 2AM_26
+  - first:
+      213: 2000826352257613662
+    second: 2AM_27
+  - first:
+      213: -6632855367751673594
+    second: 2AM_28
+  - first:
+      213: 603700385047172552
+    second: 2AM_29
+  - first:
+      213: 5192329089102763729
+    second: 2AM_30
+  - first:
+      213: 6422726838877792203
+    second: 2AM_31
+  - first:
+      213: 8827031297118204617
+    second: 2AM_32
+  - first:
+      213: -8444227977410120412
+    second: 2AM_33
+  - first:
+      213: 2999406614623033791
+    second: 2AM_34
+  - first:
+      213: -2947072380176664396
+    second: 2AM_35
+  - first:
+      213: 4979830339955511542
+    second: 2AM_36
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -186,7 +216,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 3072
+        y: 2048
         width: 256
         height: 512
       alignment: 0
@@ -207,7 +237,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 3072
+        y: 2048
         width: 256
         height: 512
       alignment: 0
@@ -228,7 +258,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 3072
+        y: 2048
         width: 256
         height: 512
       alignment: 0
@@ -249,7 +279,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 768
-        y: 3072
+        y: 2048
         width: 256
         height: 512
       alignment: 0
@@ -269,8 +299,8 @@ TextureImporter:
       name: 2AM_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2560
+        x: 1024
+        y: 2048
         width: 256
         height: 512
       alignment: 0
@@ -290,8 +320,8 @@ TextureImporter:
       name: 2AM_5
       rect:
         serializedVersion: 2
-        x: 256
-        y: 2560
+        x: 1280
+        y: 2048
         width: 256
         height: 512
       alignment: 0
@@ -311,8 +341,8 @@ TextureImporter:
       name: 2AM_6
       rect:
         serializedVersion: 2
-        x: 512
-        y: 2560
+        x: 1536
+        y: 2048
         width: 256
         height: 512
       alignment: 0
@@ -332,8 +362,8 @@ TextureImporter:
       name: 2AM_7
       rect:
         serializedVersion: 2
-        x: 768
-        y: 2560
+        x: 1792
+        y: 2048
         width: 256
         height: 512
       alignment: 0
@@ -354,7 +384,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2048
+        y: 1536
         width: 256
         height: 512
       alignment: 0
@@ -375,7 +405,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 2048
+        y: 1536
         width: 256
         height: 512
       alignment: 0
@@ -396,7 +426,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 2048
+        y: 1536
         width: 256
         height: 512
       alignment: 0
@@ -417,7 +447,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 768
-        y: 2048
+        y: 1536
         width: 256
         height: 512
       alignment: 0
@@ -437,7 +467,7 @@ TextureImporter:
       name: 2AM_12
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1024
         y: 1536
         width: 256
         height: 512
@@ -458,7 +488,7 @@ TextureImporter:
       name: 2AM_13
       rect:
         serializedVersion: 2
-        x: 256
+        x: 1280
         y: 1536
         width: 256
         height: 512
@@ -479,7 +509,7 @@ TextureImporter:
       name: 2AM_14
       rect:
         serializedVersion: 2
-        x: 512
+        x: 1536
         y: 1536
         width: 256
         height: 512
@@ -500,7 +530,7 @@ TextureImporter:
       name: 2AM_15
       rect:
         serializedVersion: 2
-        x: 768
+        x: 1792
         y: 1536
         width: 256
         height: 512
@@ -605,8 +635,8 @@ TextureImporter:
       name: 2AM_20
       rect:
         serializedVersion: 2
-        x: 0
-        y: 512
+        x: 1024
+        y: 1024
         width: 256
         height: 512
       alignment: 0
@@ -626,8 +656,8 @@ TextureImporter:
       name: 2AM_21
       rect:
         serializedVersion: 2
-        x: 256
-        y: 512
+        x: 1280
+        y: 1024
         width: 256
         height: 512
       alignment: 0
@@ -647,8 +677,8 @@ TextureImporter:
       name: 2AM_22
       rect:
         serializedVersion: 2
-        x: 512
-        y: 512
+        x: 1536
+        y: 1024
         width: 256
         height: 512
       alignment: 0
@@ -668,8 +698,8 @@ TextureImporter:
       name: 2AM_23
       rect:
         serializedVersion: 2
-        x: 768
-        y: 512
+        x: 1792
+        y: 1024
         width: 256
         height: 512
       alignment: 0
@@ -690,7 +720,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 512
         width: 256
         height: 512
       alignment: 0
@@ -711,7 +741,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 0
+        y: 512
         width: 256
         height: 512
       alignment: 0
@@ -731,8 +761,8 @@ TextureImporter:
       name: 2AM_26
       rect:
         serializedVersion: 2
-        x: 768
-        y: 0
+        x: 512
+        y: 512
         width: 256
         height: 512
       alignment: 0
@@ -744,6 +774,216 @@ TextureImporter:
       bones: []
       spriteID: c673183df52dcb2e0800000000000000
       internalID: -2108579216504047764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2AM_27
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f3e8f67fc54cb10800000000000000
+      internalID: 2000826352257613662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2AM_28
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6095e967f2d53f3a0800000000000000
+      internalID: -6632855367751673594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2AM_29
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c5d0893d46c06800800000000000000
+      internalID: 603700385047172552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2AM_30
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d6d5e0ebcbde0840800000000000000
+      internalID: 5192329089102763729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2AM_31
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 512
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc7ada8e70c122950800000000000000
+      internalID: 6422726838877792203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2AM_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c27cf5723aef7a70800000000000000
+      internalID: 8827031297118204617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2AM_33
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 425fd0cd46310da80800000000000000
+      internalID: -8444227977410120412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2AM_34
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb91099ac6800a920800000000000000
+      internalID: 2999406614623033791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2AM_35
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b87434d845e917d0800000000000000
+      internalID: -2947072380176664396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2AM_36
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 256
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f0d2c65f49eb1540800000000000000
+      internalID: 4979830339955511542
       vertices: []
       indices: 
       edges: []
