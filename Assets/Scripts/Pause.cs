@@ -33,7 +33,7 @@ public class Pause : MonoBehaviour
     }
 
 	public void Menu() {
-		SceneManager.LoadScene("Scenes/Menu");
+		SceneManager.LoadScene("Scenes/Level Select");
 	}
 
 	public void Resume() {
