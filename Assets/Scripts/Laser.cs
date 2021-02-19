@@ -29,12 +29,12 @@ public class Laser : MonoBehaviour
                 break;
             case 90:
                 size = new Vector2(1f, 0.75f);
-                offset = new Vector2(0.5f, 0f);
+                offset = new Vector2(-0.5f, 0f);
                 direction = Vector2.left;
                 break;
             case 180:
                 size = new Vector2(0.75f, 1f);
-                offset = new Vector2(0f, 0.5f);
+                offset = new Vector2(0f, -0.5f);
                 direction = Vector2.down;
                 break;
             case 270:
