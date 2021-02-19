@@ -15,6 +15,7 @@ public class LevelSelect : MonoBehaviour
     private const int COLUMN_COUNT = 9;
 
     [SerializeField] GameObject buttonPrefab;
+    [SerializeField] GameObject hoverBubble;
     [SerializeField] Button leftArrow;
     [SerializeField] Button rightArrow;
 
@@ -24,6 +25,10 @@ public class LevelSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Disable hover
+        hoverBubble.SetActive(false);
+
+        //Initialize stuff
         List<string> q = new List<string>();
         pages = new List<GameObject>();
 
@@ -75,8 +80,12 @@ public class LevelSelect : MonoBehaviour
                         levelNumStr = "0" + levelNumStr;
                     }
                     currentButton.GetComponentInChildren<TMP_Text>().text = levelNumStr;
-                    q.RemoveAt(0);
 
+                    //Give button hover reference
+                    currentButton.GetComponent<LevelButton>().hoverBubble = hoverBubble;
+
+                    //Remove from queue
+                    q.RemoveAt(0);
                 }
                 //Check if done
                 if (q.Count == 0) {
@@ -98,7 +107,6 @@ public class LevelSelect : MonoBehaviour
 
         //Update Arrows
         currentPage = 0;
-        print(currentPage + " " + pages.Count);
         UpdateArrows();
     }
 
@@ -126,4 +134,6 @@ public class LevelSelect : MonoBehaviour
             rightArrow.interactable = false;
         }
     }
+
+
 }
