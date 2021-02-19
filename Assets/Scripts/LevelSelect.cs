@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelSelect : MonoBehaviour
@@ -19,12 +21,13 @@ public class LevelSelect : MonoBehaviour
     [SerializeField] Button leftArrow;
     [SerializeField] Button rightArrow;
 
+    public static bool loaded;
     private List<GameObject> pages;
     private int currentPage;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+
         //Disable hover
         hoverBubble.SetActive(false);
 
@@ -32,22 +35,24 @@ public class LevelSelect : MonoBehaviour
         List<string> q = new List<string>();
         pages = new List<GameObject>();
 
-        //Load files
-        DirectoryInfo dir = new DirectoryInfo("Assets/Scenes/Levels/");
-        FileInfo[] info = dir.GetFiles("*.unity");
 
         //Get numbered levels first
-        for (int i = 0; i < info.Length; i++) {
-            if (info[i].Name.ToLowerInvariant().Contains("level") && info[i].Name.ToLowerInvariant().Any(char.IsDigit)) {
-                q.Add(info[i].Name);
-                info[i] = null;
+        print(SceneManager.sceneCountInBuildSettings);
+        for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++) {
+            string currentScene = SceneUtility.GetScenePathByBuildIndex(i);
+            currentScene = currentScene.Substring(currentScene.LastIndexOf("/") + 1, currentScene.LastIndexOf(".") - currentScene.LastIndexOf("/") - 1);
+            if (currentScene.ToLowerInvariant().Contains("level") && currentScene.ToLowerInvariant().Any(char.IsDigit)) {
+                q.Add(currentScene);
             }
         }
 
         //Get rest of levels into queue
-        for (int i = 0; i < info.Length; i++) {
-            if (info[i] != null && !info[i].Name.Equals("Test Level.unity") && !info[i].Name.Equals("Level Template.unity")) {
-                q.Add(info[i].Name);
+        for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++) {
+            string currentScene = SceneUtility.GetScenePathByBuildIndex(i);
+            currentScene = currentScene.Substring(currentScene.LastIndexOf("/") + 1, currentScene.LastIndexOf(".") - currentScene.LastIndexOf("/") - 1);
+            if (!currentScene.Equals("Level Select") && !currentScene.Equals("Test Level") && !currentScene.Equals("Level Template") && 
+                !(currentScene.ToLowerInvariant().Contains("level") && currentScene.ToLowerInvariant().Any(char.IsDigit))) {
+                q.Add(currentScene);
             }
         }
 
@@ -70,7 +75,7 @@ public class LevelSelect : MonoBehaviour
                     //Create button
                     GameObject currentButton = Instantiate(buttonPrefab);
                     currentButton.transform.SetParent(page.transform);
-                    currentButton.name = q[0].Substring(0, q[0].LastIndexOf(".unity"));
+                    currentButton.name = q[0];
                     currentButton.transform.localPosition = new Vector2(X_START + j * BUTT_DIST, Y_START - i * BUTT_DIST);
                     currentButton.transform.localScale = Vector3.one;
 
