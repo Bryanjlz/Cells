@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
-	[SerializeField] Canvas canvas;
+	[SerializeField] CanvasGroup pauseScreen;
 	[SerializeField] public static bool isPaused;
 	// Start is called before the first frame update
 	void Start()
 	{
 		isPaused = false;
 		Time.timeScale = 1;
-		canvas.enabled = false;
+		pauseScreen.gameObject.SetActive(false);
 	}
 
 	// Update is called once per frame
@@ -21,14 +21,14 @@ public class Pause : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Escape)) {
 			isPaused = true;
 			Time.timeScale = 0;
-			canvas.enabled = true;
+			pauseScreen.gameObject.SetActive(true);
         }
 		if (Input.GetKeyDown(KeyCode.R)) {
 			Restart();
         }
 	}
 
-	public void Restart () {
+	public void Restart() {
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -36,9 +36,9 @@ public class Pause : MonoBehaviour
 		SceneManager.LoadScene("Scenes/Menu");
 	}
 
-	public void Resume () {
+	public void Resume() {
 		isPaused = false;
 		Time.timeScale = 1;
-		canvas.enabled = false;
+		pauseScreen.gameObject.SetActive(false);
     }
 }
