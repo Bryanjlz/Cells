@@ -7,6 +7,9 @@ public class EyeBlock : MonoBehaviour
     public Sprite enabledSprite;
     public Sprite disabledSprite;
 
+    public int enabledAlpha = 255;
+    public int disabledAlpha = 100;
+
     [HideInInspector]
     public SpriteRenderer spriteRenderer;
 
@@ -40,6 +43,7 @@ public static class EyeManager {
         foreach (EyeBlock block in blocks) {
             block.gameObject.layer = 9;
             block.spriteRenderer.sprite = block.enabledSprite;
+            block.spriteRenderer.color = new Color(block.spriteRenderer.color.r, block.spriteRenderer.color.g, block.spriteRenderer.color.b, block.enabledAlpha/255.0f);
         }
     }
 
@@ -48,6 +52,7 @@ public static class EyeManager {
         foreach (EyeBlock block in blocks) {
             block.gameObject.layer = 2;
             block.spriteRenderer.sprite = block.disabledSprite;
+            block.spriteRenderer.color = new Color(block.spriteRenderer.color.r, block.spriteRenderer.color.g, block.spriteRenderer.color.b, block.disabledAlpha/255.0f);
         }
     }
 }
