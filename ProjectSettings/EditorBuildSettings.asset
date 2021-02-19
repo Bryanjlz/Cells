@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Level Select.unity
     guid: 021fb5126fc8c094d833adbb4de7977d
@@ -17,8 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level 2.unity
     guid: b30b6ace8678a3d4ca8e9bb46e01e103
-  - enabled: 0
-    path: Assets/Scenes/Levels/Level 4.unity
+  - enabled: 1
+    path: Assets/Scenes/Levels/Level 3.unity
     guid: 2313ef3e98b4b5145a7ed7fa383fa17e
   - enabled: 1
     path: Assets/Scenes/Levels/Slime Adventure.unity

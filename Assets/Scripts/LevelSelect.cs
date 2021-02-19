@@ -48,7 +48,6 @@ public class LevelSelect : MonoBehaviour
         for (int i = 0; i < info.Length; i++) {
             if (info[i] != null && !info[i].Name.Equals("Test Level.unity") && !info[i].Name.Equals("Level Template.unity")) {
                 q.Add(info[i].Name);
-
             }
         }
 
@@ -58,6 +57,7 @@ public class LevelSelect : MonoBehaviour
             GameObject page = new GameObject("page " + k);
             page.transform.SetParent(gameObject.transform.parent.GetChild(4));
             page.transform.localPosition = Vector2.zero;
+            page.transform.localScale = Vector3.one * 0.875f;
 
             for (int i = 0; i < ROW_COUNT; i++) {
                 for (int j = 0; j < COLUMN_COUNT; j++) {
@@ -72,6 +72,7 @@ public class LevelSelect : MonoBehaviour
                     currentButton.transform.SetParent(page.transform);
                     currentButton.name = q[0].Substring(0, q[0].LastIndexOf(".unity"));
                     currentButton.transform.localPosition = new Vector2(X_START + j * BUTT_DIST, Y_START - i * BUTT_DIST);
+                    currentButton.transform.localScale = Vector3.one;
 
                     //Calculate level number
                     int levelNum= k * 18 + i * 9 + j + 1;
