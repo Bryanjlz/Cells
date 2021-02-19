@@ -50,8 +50,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (!Pause.isPaused) {
-            bool upInput = Input.GetAxis("Vertical") > 0;
-            if (!isJumping && upInput && HasGravity() && jumps > 0)
+            if (Input.GetKeyDown(KeyCode.Space) && HasGravity() && jumps > 0)
             {
                 jumps--;
                 rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
@@ -60,15 +59,19 @@ public class PlayerController : MonoBehaviour
                 } else {
                     direction = Vector2.down;
                 }
-            } else if (!isJumping && upInput && jumps > 0) {
-                rigidBody2d.velocity = new Vector2(rigidBody2d.velocity.x, 0f);
-                jumps--;
+            } else if (Input.GetKeyDown(KeyCode.Space) && jumps > 0) {
+                
                 isJumping = true;
+                rigidBody2d.velocity = new Vector2(rigidBody2d.velocity.x, 0f);
+                rigidBody2d.gravityScale = jumpVelocity / jumpTime;
                 rigidBody2d.AddForce(Vector2.up * jumpVelocity * 60);
             }
             if (isJumping) {
-                if (!upInput) {
+                
+                if (Input.GetKeyUp(KeyCode.Space)) {
+                    jumps--;
                     isJumping = false;
+                    
                     if (rigidBody2d.velocity.y > minVelocity) {
                         rigidBody2d.velocity = new Vector2(rigidBody2d.velocity.x, minVelocity);
                     }
@@ -162,6 +165,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (transform.GetChild(i).GetComponent<GravityCell>() != null)
                 {
+
                     return true;
                 }
             }
