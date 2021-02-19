@@ -32834,6 +32834,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8030467575270926363, guid: 83629fd8fc5fbe24f970455183fb2b11, type: 3}
+      propertyPath: orthographic size
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 8030467575270926364, guid: 83629fd8fc5fbe24f970455183fb2b11, type: 3}
       propertyPath: m_Name
       value: Main Camera

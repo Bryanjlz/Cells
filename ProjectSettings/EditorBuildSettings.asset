@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Slime Adventure.unity
     guid: ac2791a01d7a62045a5174f73bdcf45e
   - enabled: 1
-    path: Assets/Scenes/Levels/Slime Block Into.unity
+    path: Assets/Scenes/Levels/Slime Block Intro.unity
     guid: 418c4e3add416d048a484ef6010e6a80
   - enabled: 1
     path: Assets/Scenes/Levels/Space Cell Intro.unity

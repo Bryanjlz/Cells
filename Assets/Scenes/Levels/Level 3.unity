@@ -710,8 +710,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numAltars: 1
   numCells: 1
-  cellCounterGUI: {fileID: 0}
-  altarCounterGUI: {fileID: 0}
+  cellCounterGUI: {fileID: 2042139992}
+  altarCounterGUI: {fileID: 2042139991}
 --- !u!4 &320930212
 Transform:
   m_ObjectHideFlags: 0
@@ -49152,6 +49152,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa4c6bd533b9d7c48942d007d6383fcc, type: 3}
+--- !u!114 &2042139991 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4373460748435690333, guid: aa4c6bd533b9d7c48942d007d6383fcc, type: 3}
+  m_PrefabInstance: {fileID: 2042139990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2042139992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5419439882490785708, guid: aa4c6bd533b9d7c48942d007d6383fcc, type: 3}
+  m_PrefabInstance: {fileID: 2042139990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2059836982 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8691148254604585537, guid: 270281d5a44d31b4b8ac764eb0d46aff, type: 3}
