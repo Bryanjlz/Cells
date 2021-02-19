@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/The Ferry.unity
     guid: 512131df5dd39a943824afa9f04211f4
+  - enabled: 1
+    path: Assets/Scenes/Levels/The Consequence.unity
+    guid: b2b7382caa6aeef408dabcb4836ed569
   m_configObjects: {}

@@ -48,9 +48,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserBeam: {fileID: 4308539178744770494}
   laserCollider: {fileID: 8691148254604585543}
-  worldLayer:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!212 &8691148254604585536
 SpriteRenderer:
   m_ObjectHideFlags: 0
