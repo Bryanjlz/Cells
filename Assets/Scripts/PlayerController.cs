@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Pause pause;
     bool isJumping = false;
 
-    int jumps = 1;
+    int extra_jumps = 0;
 
     // Ramp to enable the death sequence
     bool dying = false;
@@ -54,26 +54,31 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (!Pause.isPaused) {
-            if (Input.GetKeyDown(KeyCode.Space) && HasGravity() && jumps > 0)
+            if (Input.GetKeyDown(KeyCode.Space) && HasGravity() && (IsGrounded() || extra_jumps > 0))
             {
-                jumps--;
+                if (!IsGrounded())
+                {
+                    extra_jumps--;
+                }
                 rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
                 if (direction.Equals(Vector2.down)) {
                     direction = Vector2.up;
                 } else {
                     direction = Vector2.down;
                 }
-            } else if (Input.GetKeyDown(KeyCode.Space) && jumps > 0) {
-                
+            } else if (Input.GetKeyDown(KeyCode.Space) && (IsGrounded() || extra_jumps > 0)) {
+                if (!IsGrounded())
+                {
+                    extra_jumps--;
+                }
                 isJumping = true;
                 rigidBody2d.velocity = new Vector2(rigidBody2d.velocity.x, 0f);
                 rigidBody2d.gravityScale = jumpVelocity / jumpTime;
                 rigidBody2d.AddForce(Vector2.up * jumpVelocity * 60);
             }
             if (isJumping) {
-                
                 if (Input.GetKeyUp(KeyCode.Space)) {
-                    jumps--;
+                    
                     isJumping = false;
                     
                     if (rigidBody2d.velocity.y > minVelocity) {
@@ -84,7 +89,7 @@ public class PlayerController : MonoBehaviour
 
             if (IsGrounded())
             {
-                jumps = 1 + SlimeBoosts();
+                extra_jumps = SlimeBoosts();
             }
 
             if (rigidBody2d.gravityScale < 0 && !HasGravity())
