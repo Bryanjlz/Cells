@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     // Ramp to enable the death sequence
     bool dying = false;
 
+    Bounds bound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,8 @@ public class PlayerController : MonoBehaviour
         colliders.Add(GetComponent<BoxCollider2D>());
         jumpVelocity = 2 * jumpHeight / jumpTime;
         rigidBody2d.gravityScale = jumpVelocity / jumpTime;
+        
+        bound = GameObject.Find("Grid/Tilemap").GetComponent<Renderer>().bounds;
     }
 
     // Update is called once per frame
@@ -87,7 +91,10 @@ public class PlayerController : MonoBehaviour
             {
                 rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
             }
+        }
 
+        if (!bound.Contains(transform.position)) {
+            Die();
         }
     }
 
