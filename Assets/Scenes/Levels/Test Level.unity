@@ -5428,11 +5428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8317ff92ed6d17b4fa598fe280d8063c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1022411617 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 345683018353544956, guid: 9617d80a13bec944f9eab43402710c05, type: 3}
-  m_PrefabInstance: {fileID: 1862055395}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1083892330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5569,11 +5564,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5012592751767916720, guid: a124e27c80f589649adb3d1e3990c2c2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.57
+      value: 25.5
       objectReference: {fileID: 0}
     - target: {fileID: 5012592751767916720, guid: a124e27c80f589649adb3d1e3990c2c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.51
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5012592751767916720, guid: a124e27c80f589649adb3d1e3990c2c2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5648,7 +5643,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea83966766b9f94494ebaa1c532c51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  focus: {fileID: 1022411617}
+  cinemachine: {fileID: 0}
+  cinemachineConfiner: {fileID: 0}
 --- !u!81 &1530160030
 AudioListener:
   m_ObjectHideFlags: 0
@@ -6012,11 +6008,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 345683018353544954, guid: 9617d80a13bec944f9eab43402710c05, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.495
+      value: 25.5
       objectReference: {fileID: 0}
     - target: {fileID: 345683018353544954, guid: 9617d80a13bec944f9eab43402710c05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.49
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 345683018353544954, guid: 9617d80a13bec944f9eab43402710c05, type: 3}
       propertyPath: m_LocalPosition.z
