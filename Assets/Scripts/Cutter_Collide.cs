@@ -12,14 +12,18 @@ public class Cutter_Collide : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
+                int cellsSacrificed = 0;
                 for (int i = 0; i < controller.transform.childCount; i++)
                 {
                     if (controller.transform.GetChild(i).GetComponent<Cell>() != null) {
                         controller.transform.GetChild(i).GetComponent<Cell>().death();
                         Destroy(controller.transform.GetChild(i).gameObject);
                         controller.colliders.RemoveAt(1);
+                        cellsSacrificed++;
                     }
                 }
+
+                LevelHandler.instance.UpdateAltars(1, cellsSacrificed);
 
                 Destroy(transform.GetChild(0).gameObject);
                 GetComponent<PolygonCollider2D>().enabled = false;
