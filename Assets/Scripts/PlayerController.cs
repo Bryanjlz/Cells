@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
             if (rigidBody2d.gravityScale < 0 && !HasGravity())
             {
                 rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
+                direction = Vector2.down;
             }
         }
 
