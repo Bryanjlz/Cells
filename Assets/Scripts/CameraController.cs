@@ -13,7 +13,10 @@ public class CameraController : MonoBehaviour
 
         GameObject confiner = GameObject.Find("Confiner");
         if (confiner != null) {
-            cinemachineConfiner.m_BoundingShape2D = confiner.GetComponent<Collider2D>();
+            Collider2D collider = confiner.GetComponent<Collider2D>();
+            if (collider != null) {
+                cinemachineConfiner.m_BoundingShape2D = confiner.GetComponent<Collider2D>();
+            }
         }
 
     }
