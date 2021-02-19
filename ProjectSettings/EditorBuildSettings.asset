@@ -17,8 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Level 2.unity
     guid: b30b6ace8678a3d4ca8e9bb46e01e103
-  - enabled: 1
-    path: Assets/Scenes/Levels/Level 3.unity
+  - enabled: 0
+    path: Assets/Scenes/Levels/Level 4.unity
     guid: 2313ef3e98b4b5145a7ed7fa383fa17e
   - enabled: 1
     path: Assets/Scenes/Levels/Slime Adventure.unity
@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/The Hook.unity
     guid: d2c99c5c4b438fa4b90fac9c19b410ba
+  - enabled: 1
+    path: Assets/Scenes/Levels/Pick Your Pick.unity
+    guid: 0a832444089abba4ca48902dd586099c
   m_configObjects: {}
