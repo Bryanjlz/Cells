@@ -69,7 +69,6 @@ public class Laser : MonoBehaviour
     }
     RaycastHit2D BoxCast(Vector2 origin, Vector2 size, int mask) {
         RaycastHit2D hit = Physics2D.BoxCast(origin, size, 0, direction, 100f, mask);
-        print(hit.distance);
         ////Setting up the points to draw the cast
         //Vector2 p1, p2, p3, p4, p5, p6, p7, p8;
         //float w = size.x * 0.5f;
