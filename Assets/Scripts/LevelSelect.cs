@@ -37,7 +37,6 @@ public class LevelSelect : MonoBehaviour
 
 
         //Get numbered levels first
-        print(SceneManager.sceneCountInBuildSettings);
         for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++) {
             string currentScene = SceneUtility.GetScenePathByBuildIndex(i);
             currentScene = currentScene.Substring(currentScene.LastIndexOf("/") + 1, currentScene.LastIndexOf(".") - currentScene.LastIndexOf("/") - 1);

@@ -7,6 +7,7 @@ public class Laser : MonoBehaviour
     [SerializeField] GameObject laserBeam;
     [SerializeField] Collider2D laserCollider;
 
+    public bool isOn;
 
     Vector3 center;
     Vector3 size;
@@ -18,6 +19,7 @@ public class Laser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isOn = true;
         center = gameObject.transform.position;
         //Get direction
         int zRotation = (int)gameObject.transform.rotation.eulerAngles.z % 360;
@@ -53,7 +55,11 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CreateLaser();
+        if (isOn) {
+            CreateLaser();
+        } else {
+            laserBeam.transform.localScale = new Vector3(0, 0);
+        }
     }
 
     private void CreateLaser () {
