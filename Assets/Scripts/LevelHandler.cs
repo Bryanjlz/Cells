@@ -18,6 +18,7 @@ public class LevelHandler: MonoBehaviour
     GameObject largeText;
     GameObject pauseScreen;
 
+    GameObject lasers;
 
     public void Start() {
         instance = this;
@@ -27,8 +28,9 @@ public class LevelHandler: MonoBehaviour
 
         largeText = GameObject.Find("Large Text");
         pauseScreen = largeText.transform.parent.gameObject;
-
         pauseScreen.SetActive(false);
+
+        lasers = GameObject.Find("Lasers");
     }
 
     public void UpdateAltars(int altarsDeactivated, int cellsConsumed) {
@@ -51,6 +53,11 @@ public class LevelHandler: MonoBehaviour
 
             //Add next level button
             pauseScreen.transform.GetChild(4).gameObject.SetActive(true);
+
+            //Turn off all lasers
+            foreach (Laser laser in lasers.GetComponentsInChildren<Laser>()) {
+                laser.isOn = false;
+            }
 
             //Delay stuff
             StartCoroutine(MyCoroutine());
