@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Slime Block Intro.unity
     guid: 418c4e3add416d048a484ef6010e6a80
   - enabled: 1
+    path: Assets/Scenes/Levels/The Tower.unity
+    guid: 5ada7ef84e1ba7c49923e737c9e88bcc
+  - enabled: 1
     path: Assets/Scenes/Levels/Space Cell Intro.unity
     guid: b18a87a0aecc316478495e2669d044c8
   - enabled: 1
