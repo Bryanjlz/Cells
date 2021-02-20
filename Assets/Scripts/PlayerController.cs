@@ -60,7 +60,12 @@ public class PlayerController : MonoBehaviour
                 {
                     extra_jumps--;
                 }
+
+                // Audio
+                FindObjectOfType<AudioManager>().Play("Jump");
+
                 rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
+
                 if (direction.Equals(Vector2.down)) {
                     direction = Vector2.up;
                 } else {
@@ -71,6 +76,10 @@ public class PlayerController : MonoBehaviour
                 {
                     extra_jumps--;
                 }
+
+                // Audio
+                FindObjectOfType<AudioManager>().Play("Jump");
+
                 isJumping = true;
                 rigidBody2d.velocity = new Vector2(rigidBody2d.velocity.x, 0f);
                 rigidBody2d.gravityScale = jumpVelocity / jumpTime;
