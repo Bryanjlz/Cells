@@ -7062,8 +7062,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3db86e5009f6084783408a424e11cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numAltars: 0
-  numCells: 0
+  numAltars: 1
+  numCells: 3
   cellCounterGUI: {fileID: 305470277}
   altarCounterGUI: {fileID: 305470274}
 --- !u!4 &1243273174
@@ -7281,15 +7281,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8030467575270926360, guid: 83629fd8fc5fbe24f970455183fb2b11, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 146279.67
+      value: 146687.17
       objectReference: {fileID: 0}
     - target: {fileID: 8030467575270926360, guid: 83629fd8fc5fbe24f970455183fb2b11, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 33752.39
+      value: 33846.39
       objectReference: {fileID: 0}
     - target: {fileID: 8030467575270926360, guid: 83629fd8fc5fbe24f970455183fb2b11, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5057584.5
+      value: -5071672.5
       objectReference: {fileID: 0}
     - target: {fileID: 8030467575270926360, guid: 83629fd8fc5fbe24f970455183fb2b11, type: 3}
       propertyPath: m_LocalRotation.w
