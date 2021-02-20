@@ -12,7 +12,6 @@ public class Pause : MonoBehaviour
 	{
 		isPaused = false;
 		Time.timeScale = 1;
-		pauseScreen.gameObject.SetActive(false);
 	}
 
 	// Update is called once per frame
@@ -41,4 +40,9 @@ public class Pause : MonoBehaviour
 		Time.timeScale = 1;
 		pauseScreen.gameObject.SetActive(false);
     }
+
+	public void NextLevel() {
+		//Temporary, decide later how to find next level depending on how we store level order
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	}
 }

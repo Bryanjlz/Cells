@@ -15,12 +15,20 @@ public class LevelHandler: MonoBehaviour
 
     public static LevelHandler instance;
 
+    GameObject largeText;
+    GameObject pauseScreen;
+
 
     public void Start() {
-        LevelHandler.instance = this;
+        instance = this;
 
         altarCounterGUI.text = string.Format("X{0}", numAltars);
         cellCounterGUI.text = string.Format("X{0}", numCells);
+
+        largeText = GameObject.Find("Large Text");
+        pauseScreen = largeText.transform.parent.gameObject;
+
+        pauseScreen.SetActive(false);
     }
 
     public void UpdateAltars(int altarsDeactivated, int cellsConsumed) {
@@ -32,7 +40,28 @@ public class LevelHandler: MonoBehaviour
 
         if (numCells == 0) {
             //Win thing
-            print("Level Win!");
+
+            //Edit pause text to say complete
+            Rect currentRect = largeText.GetComponent<RectTransform>().rect;
+            largeText.GetComponent<RectTransform>().sizeDelta = new Vector2(890f, currentRect.height);
+            largeText.GetComponentInChildren<TMP_Text>().text = "COMPLETE";
+
+            //Remove resume button
+            pauseScreen.transform.GetChild(3).gameObject.SetActive(false);
+
+            //Add next level button
+            pauseScreen.transform.GetChild(4).gameObject.SetActive(true);
+
+            //Delay stuff
+            StartCoroutine(MyCoroutine());
         }
+    }
+
+    IEnumerator MyCoroutine() {
+        yield return new WaitForSeconds(1);
+        //Stop things and show canvas
+        Pause.isPaused = true;
+        Time.timeScale = 0;
+        pauseScreen.gameObject.SetActive(true);
     }
 }
