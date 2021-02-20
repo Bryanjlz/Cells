@@ -12,17 +12,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Level Select.unity
     guid: 021fb5126fc8c094d833adbb4de7977d
   - enabled: 1
-    path: Assets/Scenes/Levels/Level 1.unity
+    path: Assets/Scenes/Levels/The First Steps.unity
     guid: 14448c5a74cb7ef478a3bafe9d558d03
   - enabled: 1
-    path: Assets/Scenes/Levels/Level 2.unity
+    path: Assets/Scenes/Levels/Shape Up.unity
     guid: b30b6ace8678a3d4ca8e9bb46e01e103
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Levels/Spikes and Lasers.unity
+    guid: 2313ef3e98b4b5145a7ed7fa383fa17e
   - enabled: 1
     path: Assets/Scenes/Levels/Slime Block Intro.unity
     guid: 418c4e3add416d048a484ef6010e6a80
+  - enabled: 1
+    path: Assets/Scenes/Levels/The Tower.unity
+    guid: 5ada7ef84e1ba7c49923e737c9e88bcc
   - enabled: 1
     path: Assets/Scenes/Levels/Space Cell Intro.unity
     guid: b18a87a0aecc316478495e2669d044c8
@@ -41,6 +44,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/The Flight.unity
     guid: 3aa3b5ff2c71c564db605001ee7c25f3
+  - enabled: 1
+    path: Assets/Scenes/Levels/The Helicopter.unity
+    guid: 7284712ac6e67694290b0c5ffa7bff3a
   - enabled: 1
     path: Assets/Scenes/Levels/Three Rooms.unity
     guid: 5bc4cff82e8210e428aa8b9b12736315
