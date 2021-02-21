@@ -82,7 +82,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Jump6
     clip: {fileID: 8300000, guid: fa545b13ad315e8439e10e573405ed79, type: 3}
-    volume: 0.5
+    volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
