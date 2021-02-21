@@ -23,7 +23,7 @@ public class BackstoryScript : MonoBehaviour
         dialogue = new List<string>();
         currentDialogue = 0;
         dialogue.Add("Once upon a time, there was a god capable of mystical feats. Loved by all, they would share their power with the creatures below, however, not all were pleased by this.".ToUpperInvariant());
-        dialogue.Add("Jealous of the god, heretics and non-believer banded together to bring ruin to them. A powerful spell divided the god into cells until only their soul remained.".ToUpperInvariant());
+        dialogue.Add("Jealous of the god, heretics and non-believers banded together to bring ruin to them. A powerful spell divided the god into cells until only their soul remained.".ToUpperInvariant());
         dialogue.Add("Clinging onto hope, the god created you, the one cell to bring them back. You have been tasked to gather their cells once again.".ToUpperInvariant());
         dialogue.Add("They wish you good luck as you begin your adventure...".ToUpperInvariant());
 
