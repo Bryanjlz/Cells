@@ -13,7 +13,11 @@ public class Pause : MonoBehaviour
 	//TItle stuff
 	[SerializeField] TMP_Text titleText;
 	[SerializeField] Image titleImage;
+	[SerializeField] TMP_Text warningText;
+	[SerializeField] Image warningImage;
 	private bool isFading;
+
+	private bool isHell;
 
 
 	// Start is called before the first frame update
@@ -22,10 +26,18 @@ public class Pause : MonoBehaviour
 		isPaused = false;
 		Time.timeScale = 1;
 
+		isHell = false;
 		isFading = false;
 		if (titleText != null) {
 			titleText.text = SceneManager.GetActiveScene().name.ToUpperInvariant();
 		}
+
+		if (SceneManager.GetActiveScene().buildIndex > SceneManager.sceneCountInBuildSettings - 3) {
+			warningImage.gameObject.SetActive(true);
+			isHell = true;
+
+		}
+
 		StartCoroutine(LevelTextFade());
 	}
 
@@ -35,10 +47,20 @@ public class Pause : MonoBehaviour
 		if (titleImage != null && isFading && titleImage.color.a > 0) {
 			titleImage.color = new Color(1, 1, 1, titleImage.color.a - 1f/255f);
 			titleText.color = new Color(0, 0, 0, titleImage.color.a - 1f / 255f);
+			
+			if (isHell) {
+				warningImage.color = new Color(1, 1, 1, titleImage.color.a - 1f / 255f);
+				warningText.color = new Color(0, 0, 0, titleImage.color.a - 1f / 255f);
+			}
+
 			if (titleImage.color.a <= 0) {
 				titleImage.gameObject.SetActive(false);
 				titleText.gameObject.SetActive(false);
-            }
+				if (isHell) {
+					warningImage.gameObject.SetActive(false);
+					warningText.gameObject.SetActive(false);
+				}
+			}
         }
 
 		if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "Backstory") {
