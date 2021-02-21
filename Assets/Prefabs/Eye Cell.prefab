@@ -913,7 +913,7 @@ ParticleSystem:
     m_UseMeshMaterialIndex: 0
     m_UseMeshColors: 1
     alignToDirection: 0
-    m_Texture: {fileID: 2800000, guid: e7d2ee5bd4421df4287b5dd62e5a4aef, type: 3}
+    m_Texture: {fileID: 2800000, guid: 87b77baf50fe0ea4d91924c7141b02af, type: 3}
     m_TextureClipChannel: 3
     m_TextureClipThreshold: 0
     m_TextureUVChannel: 0
