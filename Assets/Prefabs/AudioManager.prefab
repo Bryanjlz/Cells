@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Jump
-    clip: {fileID: 8300000, guid: a99aaf0eae127864e88f92e71ea3d729, type: 3}
+  - name: Jump1
+    clip: {fileID: 8300000, guid: 8147250fca3439f45bca94de8c90c4e5, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -55,4 +55,70 @@ MonoBehaviour:
     volume: 0.25
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: Jump2
+    clip: {fileID: 8300000, guid: 3a1f3142cfebbe7439e0ddaae280ed5e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump3
+    clip: {fileID: 8300000, guid: eb24973d57f85704f9170f287f00a5ff, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump4
+    clip: {fileID: 8300000, guid: bc0a1b7504758524999bc5dd2e570c84, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump5
+    clip: {fileID: 8300000, guid: 6ec3e56db833aa94ebbf03b393c24eab, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump6
+    clip: {fileID: 8300000, guid: fa545b13ad315e8439e10e573405ed79, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Altar
+    clip: {fileID: 8300000, guid: fd9c4699c64ddc44c8fce99551b723db, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: b23598b0961f83d408bd89055525dff8, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Gravity
+    clip: {fileID: 8300000, guid: ae4fa184a28eb664e866adce9b7190f3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Gravityd
+    clip: {fileID: 8300000, guid: 4ca1d624a65a4f64988899f95b807fb0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Connect
+    clip: {fileID: 8300000, guid: f7b251513e7a6564eafb75607c436746, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Win
+    clip: {fileID: 8300000, guid: 9428cc2415712c0478e72c43384ed506, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
     source: {fileID: 0}

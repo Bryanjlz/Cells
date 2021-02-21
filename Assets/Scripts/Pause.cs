@@ -57,19 +57,22 @@ public class Pause : MonoBehaviour
 
 	public void Restart() {
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+	}
 
 	public void Menu() {
+		FindObjectOfType<AudioManager>().Play("Connect");
 		SceneManager.LoadScene("Scenes/Level Select");
 	}
 
 	public void Resume() {
+		FindObjectOfType<AudioManager>().Play("Connect");
 		isPaused = false;
 		Time.timeScale = 1;
 		pauseScreen.gameObject.SetActive(false);
     }
 
 	public void NextLevel() {
+		FindObjectOfType<AudioManager>().Play("Connect");
 		//Temporary, decide later how to find next level depending on how we store level order
 		if (SceneManager.GetActiveScene().buildIndex + 1 < SceneManager.sceneCountInBuildSettings) {
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

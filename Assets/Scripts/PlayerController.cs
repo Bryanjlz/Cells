@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
     int extra_jumps = 0;
 
+    int jump_sound = 1;
+
     // Ramp to enable the death sequence
     bool dying = false;
 
@@ -62,7 +64,13 @@ public class PlayerController : MonoBehaviour
                 }
 
                 // Audio
-                FindObjectOfType<AudioManager>().Play("Jump");
+                if (direction == Vector2.down)
+                {
+                    FindObjectOfType<AudioManager>().Play("Gravity");
+                } else
+                {
+                    FindObjectOfType<AudioManager>().Play("Gravityd");
+                }
 
                 rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
 
@@ -78,7 +86,16 @@ public class PlayerController : MonoBehaviour
                 }
 
                 // Audio
-                FindObjectOfType<AudioManager>().Play("Jump");
+                FindObjectOfType<AudioManager>().Play("Jump" + jump_sound);
+
+                if (jump_sound == 6)
+                {
+                    jump_sound = 1;
+                }
+                else
+                {
+                    jump_sound++;
+                }
 
                 isJumping = true;
                 rigidBody2d.velocity = new Vector2(rigidBody2d.velocity.x, 0f);
@@ -235,6 +252,9 @@ public class PlayerController : MonoBehaviour
                     colliders.RemoveAt(1);
                 }
             }
+
+            // Audio
+            FindObjectOfType<AudioManager>().Play("Death");
 
             Destroy(transform.GetChild(0).gameObject);
             StartCoroutine(MyCoroutine());

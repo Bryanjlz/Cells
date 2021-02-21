@@ -41,8 +41,6 @@ public class LevelHandler: MonoBehaviour
         cellCounterGUI.text = string.Format("X{0}", numCells);
 
         if (numCells == 0) {
-            //Win thing
-
             //Edit pause text to say complete
             Rect currentRect = largeText.GetComponent<RectTransform>().rect;
             largeText.GetComponent<RectTransform>().sizeDelta = new Vector2(890f, currentRect.height);
@@ -69,6 +67,8 @@ public class LevelHandler: MonoBehaviour
         //Stop things and show canvas
         Pause.isPaused = true;
         Time.timeScale = 0;
+        //Win thing
+        FindObjectOfType<AudioManager>().Play("Win");
         pauseScreen.gameObject.SetActive(true);
     }
 }

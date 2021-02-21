@@ -51,6 +51,8 @@ public class Cell : MonoBehaviour
                         player.transform.position = new Vector2(myRigidbody.position.x, myRigidbody.position.y - TILE_SIZE);
                     }
 
+                    FindObjectOfType<AudioManager>().Play("Connect");
+
                 }
                 else if (Mathf.Abs(player.position.y - myRigidbody.position.y) < Mathf.Abs(player.position.x - myRigidbody.position.x))
                 {
@@ -65,6 +67,8 @@ public class Cell : MonoBehaviour
                     {
                         player.transform.position = new Vector2(myRigidbody.position.x - TILE_SIZE, myRigidbody.position.y);
                     }
+
+                    FindObjectOfType<AudioManager>().Play("Connect");
 
                 }
                 else

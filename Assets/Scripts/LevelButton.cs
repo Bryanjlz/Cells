@@ -9,6 +9,7 @@ public class LevelButton : MonoBehaviour
     public GameObject hoverBubble;
 
     public void StartLevel () {
+        FindObjectOfType<AudioManager>().Play("Connect");
         SceneManager.LoadScene(gameObject.name);
     }
 

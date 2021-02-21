@@ -116,6 +116,7 @@ public class LevelSelect : MonoBehaviour
     }
 
     public void LeftArrow () {
+        FindObjectOfType<AudioManager>().Play("Connect");
         pages[currentPage].SetActive(false);
         currentPage--;
         pages[currentPage].SetActive(true);
@@ -123,6 +124,7 @@ public class LevelSelect : MonoBehaviour
     }
 
     public void RightArrow () {
+        FindObjectOfType<AudioManager>().Play("Connect");
         pages[currentPage].SetActive(false);
         currentPage++;
         pages[currentPage].SetActive(true);

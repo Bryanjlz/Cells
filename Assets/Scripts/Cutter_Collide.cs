@@ -21,6 +21,12 @@ public class Cutter_Collide : MonoBehaviour
                         controller.colliders.RemoveAt(1);
                         cellsSacrificed++;
                     }
+
+                    if (i == 0)
+                    {
+                        // Audio
+                        FindObjectOfType<AudioManager>().Play("Altar");
+                    }
                 }
 
                 LevelHandler.instance.UpdateAltars(1, cellsSacrificed);
