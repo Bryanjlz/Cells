@@ -23,14 +23,16 @@ public class Pause : MonoBehaviour
 		Time.timeScale = 1;
 
 		isFading = false;
-		titleText.text = SceneManager.GetActiveScene().name.ToUpperInvariant();
+		if (titleText != null) {
+			titleText.text = SceneManager.GetActiveScene().name.ToUpperInvariant();
+		}
 		StartCoroutine(LevelTextFade());
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (isFading && titleImage.color.a > 0) {
+		if (titleImage != null && isFading && titleImage.color.a > 0) {
 			titleImage.color = new Color(1, 1, 1, titleImage.color.a - 1f/255f);
 			titleText.color = new Color(0, 0, 0, titleImage.color.a - 1f / 255f);
 			if (titleImage.color.a <= 0) {
@@ -39,11 +41,16 @@ public class Pause : MonoBehaviour
             }
         }
 
-		if (Input.GetKeyDown(KeyCode.Escape)) {
-			isPaused = true;
-			Time.timeScale = 0;
-			pauseScreen.gameObject.SetActive(true);
+		if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "Backstory") {
+			if (isPaused) {
+				Resume();
+            } else {
+				isPaused = true;
+				Time.timeScale = 0;
+				pauseScreen.gameObject.SetActive(true);
+			}
         }
+
 		if (Input.GetKeyDown(KeyCode.R)) {
 			Restart();
         }
@@ -69,8 +76,12 @@ public class Pause : MonoBehaviour
 		SceneManager.LoadScene("Scenes/Level Select");
 	}
 
-	public void Resume() {
+	public void ResumeButton() {
 		FindObjectOfType<AudioManager>().Play("Connect");
+		Resume();
+	}
+
+	public void Resume() {
 		isPaused = false;
 		Time.timeScale = 1;
 		pauseScreen.gameObject.SetActive(false);

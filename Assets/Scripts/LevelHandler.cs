@@ -23,6 +23,10 @@ public class LevelHandler: MonoBehaviour
     public void Start() {
         instance = this;
 
+        numCells = GameObject.Find("Cells").transform.childCount;
+        numAltars = GameObject.Find("Cutters").transform.childCount;
+
+
         altarCounterGUI.text = string.Format("X{0}", numAltars);
         cellCounterGUI.text = string.Format("X{0}", numCells);
 

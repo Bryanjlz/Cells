@@ -35,22 +35,11 @@ public class LevelSelect : MonoBehaviour
         List<string> q = new List<string>();
         pages = new List<GameObject>();
 
-
-        //Get numbered levels first
-        for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++) {
-            string currentScene = SceneUtility.GetScenePathByBuildIndex(i);
-            currentScene = currentScene.Substring(currentScene.LastIndexOf("/") + 1, currentScene.LastIndexOf(".") - currentScene.LastIndexOf("/") - 1);
-            if (currentScene.ToLowerInvariant().Contains("level") && currentScene.ToLowerInvariant().Any(char.IsDigit)) {
-                q.Add(currentScene);
-            }
-        }
-
         //Get rest of levels into queue
         for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++) {
             string currentScene = SceneUtility.GetScenePathByBuildIndex(i);
             currentScene = currentScene.Substring(currentScene.LastIndexOf("/") + 1, currentScene.LastIndexOf(".") - currentScene.LastIndexOf("/") - 1);
-            if (!currentScene.Equals("Level Select") && !currentScene.Equals("Test Level") && !currentScene.Equals("Level Template") && 
-                !(currentScene.ToLowerInvariant().Contains("level") && currentScene.ToLowerInvariant().Any(char.IsDigit))) {
+            if (!currentScene.Equals("Level Select") && !currentScene.Equals("Test Level") && !currentScene.Equals("Level Template")) {
                 q.Add(currentScene);
             }
         }
@@ -79,7 +68,7 @@ public class LevelSelect : MonoBehaviour
                     currentButton.transform.localScale = Vector3.one;
 
                     //Calculate level number
-                    int levelNum= k * 18 + i * 9 + j + 1;
+                    int levelNum= k * 18 + i * 9 + j;
                     string levelNumStr = levelNum.ToString();
                     if (levelNum < 10) {
                         levelNumStr = "0" + levelNumStr;
