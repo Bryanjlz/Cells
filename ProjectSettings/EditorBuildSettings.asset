@@ -51,7 +51,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Three Rooms.unity
     guid: 5bc4cff82e8210e428aa8b9b12736315
   - enabled: 1
-    path: Assets/Scenes/Levels/The Mirror.unity
+    path: Assets/Scenes/Levels/Broken Mirror.unity
     guid: 73bb26bc4db7ead4da0f08de18f38212
   - enabled: 1
     path: Assets/Scenes/Levels/The Box.unity

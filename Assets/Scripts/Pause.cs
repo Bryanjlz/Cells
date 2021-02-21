@@ -55,12 +55,16 @@ public class Pause : MonoBehaviour
 		
 	}
 
+	public void RestartButton() {
+		FindObjectOfType<AudioManager>().Play("Connect");
+		Restart();
+	}
+
 	public void Restart() {
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 	public void Menu() {
-		FindObjectOfType<AudioManager>().Play("Connect");
 		SceneManager.LoadScene("Scenes/Level Select");
 	}
 
