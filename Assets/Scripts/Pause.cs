@@ -65,6 +65,7 @@ public class Pause : MonoBehaviour
 	}
 
 	public void Menu() {
+		FindObjectOfType<AudioManager>().Play("Connect");
 		SceneManager.LoadScene("Scenes/Level Select");
 	}
 
