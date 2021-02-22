@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate() {
-        Vector2 horizontalMove = new Vector2(Input.GetAxis("Horizontal") * speed, rigidBody2d.velocity.y);
+        Vector2 horizontalMove = new Vector2(Input.GetAxisRaw("Horizontal") * speed, rigidBody2d.velocity.y);
         if (!dying)
         {   
             
