@@ -108,8 +108,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.98, y: 0.98}
+  m_EdgeRadius: 0.02
 --- !u!114 &4069547842255703654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,4 +124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enabledSprite: {fileID: 7659874108083232651, guid: 9d15f357c2981524a9306700b52e4e61, type: 3}
   disabledSprite: {fileID: 8836831444461344381, guid: 9d15f357c2981524a9306700b52e4e61, type: 3}
+  enabledAlpha: 255
+  disabledAlpha: 100
   spriteRenderer: {fileID: 0}

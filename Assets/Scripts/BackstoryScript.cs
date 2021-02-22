@@ -40,16 +40,16 @@ public class BackstoryScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         if (!Pause.isPaused && Input.anyKey && !isFadeOut && !isFadeIn) {
             NextDialogue();
         }
 
         if (isFadeOut) {
             if (currentDialogue == dialogue.Count) {
-                image.color = new Color(1, 1, 1, image.color.a - 1f / 255f);
+                image.color = new Color(1, 1, 1, image.color.a - 4f / 255f);
             }
-            text.color = new Color(1, 1, 1, text.color.a - 1f / 255f);
+            text.color = new Color(1, 1, 1, text.color.a - 4f / 255f);
             if (text.color.a <= 0) {
 
                 if (currentDialogue == dialogue.Count) {
@@ -84,8 +84,8 @@ public class BackstoryScript : MonoBehaviour
             }
         }
         if (isFadeIn) {
-            image.color = new Color(1, 1, 1, image.color.a + 1f / 255f);
-            text.color = new Color(1, 1, 1, text.color.a + 1f / 255f);
+            image.color = new Color(1, 1, 1, image.color.a + 4f / 255f);
+            text.color = new Color(1, 1, 1, text.color.a + 4f / 255f);
             if (text.color.a >= 1) {
                 isFadeIn = false;
                 image.color = new Color(1, 1, 1, 1);

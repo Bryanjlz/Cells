@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/The Ironclad.unity
     guid: f8cf8b4043b7e2f439132897b8ca4309
   - enabled: 1
-    path: Assets/Scenes/Levels/Slime Block Intro.unity
+    path: Assets/Scenes/Levels/Slime Cell Intro.unity
     guid: 418c4e3add416d048a484ef6010e6a80
   - enabled: 1
     path: Assets/Scenes/Levels/The Tower.unity
@@ -39,7 +39,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/The Protecter.unity
     guid: a0a11ff685afb38428d703cbe8e53412
   - enabled: 1
-    path: Assets/Scenes/Levels/Eye Cell 1.unity
+    path: Assets/Scenes/Levels/Eye Cell Intro.unity
     guid: 1e9eb7f7751ad3e468c850d5abd224ee
   - enabled: 1
     path: Assets/Scenes/Levels/The Hook.unity
@@ -60,7 +60,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/The Box.unity
     guid: c249d8828da695e4296ad3cf9f537f45
   - enabled: 1
-    path: Assets/Scenes/Levels/Eye Cell 2.unity
+    path: Assets/Scenes/Levels/Eye Can Do it.unity
     guid: 89d1dbb642e295f479afb5e61c41cd5a
   - enabled: 1
     path: Assets/Scenes/Levels/The Ferry.unity

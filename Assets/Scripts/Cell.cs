@@ -82,7 +82,8 @@ public class Cell : MonoBehaviour
                 BoxCollider2D[] colliders = gameObject.GetComponents<BoxCollider2D>();
                 colliders[1].size = new Vector2(1f, 1f);
 
-                myCollider.size = new Vector2(0.92f, 0.92f);
+                myCollider.size = new Vector2(0.90f, 0.90f);
+                myCollider.edgeRadius = 0.02f;
                 player.gameObject.GetComponent<PlayerController>().colliders.Add(myCollider);
                 canJoin = false;
                 OnJoin();

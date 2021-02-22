@@ -4931,12 +4931,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f51776d281f015e45be0901d9f818e69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  X_VELOCITY_INSPECTION: 0
+  X_ACCELERATION_INSPECTION: 0
+  blockingColliders: []
   speed: 10
   jumpHeight: 25
   jumpTime: 3
-  platformLayer:
-    serializedVersion: 2
-    m_Bits: 512
+  rigidBody2d: {fileID: 0}
   colliders: []
   pause: {fileID: 0}
 --- !u!212 &345683018353544953
@@ -5035,5 +5036,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.92, y: 0.92}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.9, y: 0.9}
+  m_EdgeRadius: 0.02

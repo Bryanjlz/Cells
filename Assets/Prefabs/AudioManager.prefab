@@ -88,7 +88,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Altar
     clip: {fileID: 8300000, guid: fd9c4699c64ddc44c8fce99551b723db, type: 3}
-    volume: 0.4
+    volume: 0.35
     pitch: 1
     loop: 0
     source: {fileID: 0}
