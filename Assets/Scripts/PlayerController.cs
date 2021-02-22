@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     float jumpVelocity = 100f;
     float minVelocity = 5f;
+    float maxVelocity = 20f;
 
     private LayerMask worldCollisionMask = 1 << 9 | 1 << 10;
     Transform t;
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
                     FindObjectOfType<AudioManager>().Play("Gravityd");
                 }
 
+                rigidBody2d.velocity = new Vector2(rigidBody2d.velocity.x, 0f);
                 rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
 
                 if (direction.Equals(Vector2.down)) {
@@ -99,7 +101,6 @@ public class PlayerController : MonoBehaviour
 
                 isJumping = true;
                 rigidBody2d.velocity = new Vector2(rigidBody2d.velocity.x, 0f);
-                rigidBody2d.gravityScale = jumpVelocity / jumpTime;
                 rigidBody2d.AddForce(Vector2.up * jumpVelocity * 60);
             }
             if (isJumping) {
@@ -122,6 +123,10 @@ public class PlayerController : MonoBehaviour
             {
                 rigidBody2d.gravityScale = -rigidBody2d.gravityScale;
                 direction = Vector2.down;
+            }
+
+            if (Mathf.Abs(rigidBody2d.velocity.y) > maxVelocity) {
+                rigidBody2d.velocity = new Vector2(rigidBody2d.velocity.x, maxVelocity * rigidBody2d.velocity.y / Mathf.Abs(rigidBody2d.velocity.y));
             }
         }
 
