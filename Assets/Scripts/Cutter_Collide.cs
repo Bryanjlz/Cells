@@ -10,7 +10,7 @@ public class Cutter_Collide : MonoBehaviour
         // Only give health to the controller which is Ruby (since other objects do not have RubyController)
         if (controller != null)
         {
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKey(KeyCode.E) && controller.colliders.Count > 1)
             {
                 int cellsSacrificed = 0;
                 for (int i = 0; i < controller.transform.childCount; i++)

@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     float jumpVelocity = 100f;
     float minVelocity = 5f;
-    float maxVelocity = 20f;
+    float maxVelocity = 30f;
 
     private LayerMask worldCollisionMask = 1 << 9 | 1 << 10;
     Transform t;
@@ -136,7 +136,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate() {
-        Vector2 horizontalMove = new Vector2(Input.GetAxisRaw("Horizontal") * speed, rigidBody2d.velocity.y);
+        float input = Input.GetAxis("Horizontal");
+        if (Input.GetAxisRaw("Horizontal") == 0) {
+            input = 0;
+        }
+        Vector2 horizontalMove = new Vector2(input * speed, rigidBody2d.velocity.y);
         if (!dying)
         {   
             
